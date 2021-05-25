@@ -229,26 +229,6 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/bModifierApp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="54dp"
-            android:text="Modifier"
-            app:layout_constraintStart_toEndOf="@+id/bAjouterApp"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/bSupprimerApp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="54dp"
-            android:text="Supprimer"
-            app:layout_constraintStart_toEndOf="@+id/bModifierApp"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
             android:id="@+id/bRetourApp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

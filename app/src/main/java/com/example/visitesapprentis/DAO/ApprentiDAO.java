@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.view.View;
 
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -22,16 +23,17 @@ public class ApprentiDAO extends DAO<Apprenti> {
 
     //déclaration des outils nécessaire à la base
     private static final String TABLE_APPRENTI = "APPRENTI";
-    private static final String COL_ID_APPRENTI = "IDAPPRENTI";
-    private static final String COL_NOMAPPRENTI = "NOMAPPRENTI";
-    private static final String COL_PRENOMAPPRENTI = "PRENOMAPPRENT";
-    private static final String COL_ADRESSEAPPRENTI = "ADRESSEAPPRENTI";
-    private static final String COL_VILLEAPPRENTI = "VILLEAPPRENTI";
-    private static final String COL_CPAPPRENTI = "CPAPPRENTI";
-    private static final String COL_TELAPPRENTI = "TELAPPRENTI";
-    private static final String COL_DATEDEBUTAPPRENTI = "DATEDEBUTAPPRENTI";
-    private static final String COL_CLASSEAPPRENTI = "CLASSEAPPRENTI";
-    private static final String COL_MAILAPPRENTI = "MAILAPPRENTI";
+    private static final String COL_ID_APPRENTI = "idApp";
+    private static final String COL_NOMAPPRENTI = "nomApp";
+    private static final String COL_PRENOMAPPRENTI = "prenomApp";
+    private static final String COL_ADRESSEAPPRENTI = "adresseApp";
+    private static final String COL_VILLEAPPRENTI = "villeApp";
+    private static final String COL_CPAPPRENTI = "cpApp";
+    private static final String COL_TELAPPRENTI = "telApp";
+    private static final String COL_DATEDEBUTAPPRENTI = "dateDebutApp";
+    private static final String COL_CLASSEAPPRENTI = "classeApp";
+    private static final String COL_MAILAPPRENTI = "mailApp";
+
 
     public ApprentiDAO(Context context) {
         dbVisiteApprenti = new SQLiteVisitesApprentis(context);
@@ -54,7 +56,9 @@ public class ApprentiDAO extends DAO<Apprenti> {
         valeur.put(COL_VILLEAPPRENTI, app.getVilleApp());
         valeur.put(COL_CPAPPRENTI, app.getClasseApp());
         valeur.put(COL_TELAPPRENTI, app.getTelApp());
-        valeur.put(COL_DATEDEBUTAPPRENTI, app.getDateDebutApp().toString());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
+        ContentValues contentValues=new ContentValues();
+        valeur.put(COL_DATEDEBUTAPPRENTI, dateFormat.format(app.getDateDebutApp()));
         valeur.put(COL_CLASSEAPPRENTI, app.getClasseApp());
         valeur.put(COL_MAILAPPRENTI, app.getMailApp());
 
