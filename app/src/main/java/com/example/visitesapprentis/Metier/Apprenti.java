@@ -7,7 +7,7 @@ public class Apprenti {
     private int idApp;
     private String nomApp;
     private String prenomApp;
-    private String adresseApp;
+    private String addresseApp;
     private String villeApp;
     private String cpApp;
     private String telApp;
@@ -15,11 +15,11 @@ public class Apprenti {
     private String classeApp;
     private String mailApp;
 
-    public Apprenti(int id, String nomApp, String prenomApp, String adresseApp, String villeApp, String cpApp, String telApp, Date dateDebutApp, String classeApp, String mailApp) {
+    public Apprenti(int id, String nomApp, String prenomApp, String addresseApp, String villeApp, String cpApp, String telApp, Date dateDebutApp, String classeApp, String mailApp) {
         this.idApp = id;
         this.nomApp = nomApp;
         this.prenomApp = prenomApp;
-        this.adresseApp = adresseApp;
+        this.addresseApp = addresseApp;
         this.villeApp = villeApp;
         this.cpApp = cpApp;
         this.telApp = telApp;
@@ -52,12 +52,12 @@ public class Apprenti {
         this.prenomApp = prenomApp;
     }
 
-    public String getAdresseApp() {
-        return adresseApp;
+    public String getAddresseApp() {
+        return addresseApp;
     }
 
-    public void setAdresseApp(String adresseApp) {
-        this.adresseApp = adresseApp;
+    public void setAddresseApp(String adresseApp) {
+        this.addresseApp = adresseApp;
     }
 
     public String getVilleApp() {

@@ -23,6 +23,7 @@ public class ApprentiActivity extends AppCompatActivity {
     private Button bRetour;
 
     private Apprenti unApp;
+    private ApprentiDAO apprentiDAO;
 
     private EditText editNomApp;
     private EditText editPrenomApp;
@@ -58,6 +59,14 @@ public class ApprentiActivity extends AppCompatActivity {
         editClasseApp  = (EditText) findViewById(R.id.editClasseApp);
         editMailApp  = (EditText) findViewById(R.id.editMailApp);
 
+        apprentiDAO = new ApprentiDAO(getApplicationContext());
+        apprentiDAO.open();
+
+
+        for (Apprenti unApp : apprentiDAO.read()) {
+            idApp = unApp.getIdApp() + 1;
+        }
+        apprentiDAO.close();
     }
 
     private View.OnClickListener retourListener = new View.OnClickListener() {
@@ -68,14 +77,14 @@ public class ApprentiActivity extends AppCompatActivity {
         }
     };
 
-    private View.OnClickListener ajouterListener = new View.OnClickListener() {
+    private final View.OnClickListener ajouterListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
 
 
             String nomApp = editNomApp.getText().toString();
             String prenomApp = editPrenomApp.getText().toString();
-            String rueApp = editRueApp.getText().toString();
+            String addresseApp = editRueApp.getText().toString();
             String villeApp = editVilleApp.getText().toString();
             String cpApp = editCPApp.getText().toString();
             String telApp = editTelApp.getText().toString();
@@ -83,28 +92,34 @@ public class ApprentiActivity extends AppCompatActivity {
             String classeApp = editNomApp.getText().toString();
             String mailApp = editNomApp.getText().toString();
 
-            SimpleDateFormat format = new SimpleDateFormat("dd-mm-yyyy");
-            Date uneDate = new Date(20-05-2000);
-            try {
-                uneDate = format.parse(dateDebutApp);
-            } catch (ParseException e) {
-                e.printStackTrace();
-            }
+            Date ladate = StringToDate(dateDebutApp);
 
-            ApprentiDAO apprentiDAO = new ApprentiDAO(getApplicationContext());
             apprentiDAO.open();
-            for(Apprenti unApp : apprentiDAO.read()){
-                idApp = unApp.getIdApp()+1;
-            }
 
-            unApp = new Apprenti(idApp, nomApp, prenomApp, rueApp, villeApp, cpApp, telApp, uneDate, classeApp, mailApp);
+            unApp = new Apprenti(idApp, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, ladate, classeApp, mailApp);
 
             apprentiDAO.insert(unApp);
-
             apprentiDAO.close();
 
             finish();
-            startActivity(getIntent());
+            Intent intent = new Intent(ApprentiActivity.this, MainActivity.class);
+            startActivityForResult(intent, 0);
         }
+
+    };
+
+    public Date StringToDate(String s){
+
+        Date result = null;
+        try{
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+            result  = dateFormat.parse(s);
+        }
+
+        catch(ParseException e){
+            e.printStackTrace();
+
+        }
+        return result ;
     };
 }

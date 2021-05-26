@@ -13,6 +13,7 @@ import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import com.example.visitesapprentis.Metier.Apprenti;
 
@@ -26,7 +27,7 @@ public class ApprentiDAO extends DAO<Apprenti> {
     private static final String COL_ID_APPRENTI = "idApp";
     private static final String COL_NOMAPPRENTI = "nomApp";
     private static final String COL_PRENOMAPPRENTI = "prenomApp";
-    private static final String COL_ADRESSEAPPRENTI = "adresseApp";
+    private static final String COL_ADRESSEAPPRENTI = "addresseApp";
     private static final String COL_VILLEAPPRENTI = "villeApp";
     private static final String COL_CPAPPRENTI = "cpApp";
     private static final String COL_TELAPPRENTI = "telApp";
@@ -34,6 +35,17 @@ public class ApprentiDAO extends DAO<Apprenti> {
     private static final String COL_CLASSEAPPRENTI = "classeApp";
     private static final String COL_MAILAPPRENTI = "mailApp";
 
+    private String getDateTime() {
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat(
+
+                "yyyy/MM/dd ", Locale.getDefault());
+
+        Date date = new Date();
+
+        return dateFormat.format(date);
+
+    }
 
     public ApprentiDAO(Context context) {
         dbVisiteApprenti = new SQLiteVisitesApprentis(context);
@@ -52,13 +64,12 @@ public class ApprentiDAO extends DAO<Apprenti> {
         valeur.put(COL_ID_APPRENTI, app.getIdApp());
         valeur.put(COL_NOMAPPRENTI, app.getNomApp());
         valeur.put(COL_PRENOMAPPRENTI, app.getPrenomApp());
-        valeur.put(COL_ADRESSEAPPRENTI, app.getAdresseApp());
+        valeur.put(COL_ADRESSEAPPRENTI, app.getAddresseApp());
         valeur.put(COL_VILLEAPPRENTI, app.getVilleApp());
         valeur.put(COL_CPAPPRENTI, app.getClasseApp());
         valeur.put(COL_TELAPPRENTI, app.getTelApp());
-        SimpleDateFormat dateFormat = new SimpleDateFormat("dd-mm-yyyy");
-        ContentValues contentValues=new ContentValues();
-        valeur.put(COL_DATEDEBUTAPPRENTI, dateFormat.format(app.getDateDebutApp()));
+        //SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd");
+        valeur.put(COL_DATEDEBUTAPPRENTI,getDateTime());
         valeur.put(COL_CLASSEAPPRENTI, app.getClasseApp());
         valeur.put(COL_MAILAPPRENTI, app.getMailApp());
 
@@ -145,12 +156,10 @@ public class ApprentiDAO extends DAO<Apprenti> {
             date = curseur.getString(7);
             classe = curseur.getString(8);
             mail = curseur.getString(9);
-            SimpleDateFormat formatter = new SimpleDateFormat("dd-mm-yyyy");
+            SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
             Date uneDate = null;
             try {
                 uneDate = formatter.parse(date);
-                System.out.println(date);
-                System.out.println(formatter.format(date));
             } catch (ParseException e) {
                 e.printStackTrace();
             }
