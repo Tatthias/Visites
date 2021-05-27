@@ -61,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
 
         listView.setAdapter(arrayAdapter);
 
-        bAjouter = (Button) findViewById(R.id.bNouvelleApp);
+        bAjouter = (Button) findViewById(R.id.bModifierApp);
         bAjouter.setOnClickListener(ajouterListener);
 
     }
