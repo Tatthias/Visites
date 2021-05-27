@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="516dp"
                 android:layout_marginTop="20dp"
-                android:text="liste des apprentis"
+                android:text="Liste des apprentis"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"

@@ -17,6 +17,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".IHM.ApprentiActivity"></activity>
+        <activity android:name=".IHM.VisitesActivity"></activity>
     </application>
 
 </manifest>
