@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -19,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="516dp"
             android:layout_marginTop="20dp"
-            android:text="Nouvel(le) apprenti:"
+            android:text="Modifier l'apprenti :"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -27,13 +28,14 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout2"
         android:layout_width="match_parent"
         android:layout_height="420dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
         <EditText
-            android:id="@+id/editNomApp"
+            android:id="@+id/editNomAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="260dp"
@@ -44,7 +46,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editPrenomApp"
+            android:id="@+id/editPrenomAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="260dp"
@@ -52,10 +54,10 @@
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editNomApp" />
+            app:layout_constraintTop_toBottomOf="@+id/editNomAppModif" />
 
         <EditText
-            android:id="@+id/editRueApp"
+            android:id="@+id/editRueAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="260dp"
@@ -63,10 +65,10 @@
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editPrenomApp" />
+            app:layout_constraintTop_toBottomOf="@+id/editPrenomAppModif" />
 
         <EditText
-            android:id="@+id/editVilleApp"
+            android:id="@+id/editVilleAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="260dp"
@@ -74,10 +76,10 @@
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editRueApp" />
+            app:layout_constraintTop_toBottomOf="@+id/editRueAppModif" />
 
         <EditText
-            android:id="@+id/editTelApp"
+            android:id="@+id/editTelAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="800dp"
@@ -88,7 +90,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editDateDebutApp"
+            android:id="@+id/editDateDebutAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="800dp"
@@ -96,10 +98,10 @@
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTelApp" />
+            app:layout_constraintTop_toBottomOf="@+id/editTelAppModif" />
 
         <EditText
-            android:id="@+id/editCPApp"
+            android:id="@+id/editCPAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="260dp"
@@ -107,10 +109,10 @@
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editVilleApp" />
+            app:layout_constraintTop_toBottomOf="@+id/editVilleAppModif" />
 
         <EditText
-            android:id="@+id/editClasseApp"
+            android:id="@+id/editClasseAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="800dp"
@@ -118,10 +120,10 @@
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editDateDebutApp" />
+            app:layout_constraintTop_toBottomOf="@+id/editDateDebutAppModif" />
 
         <EditText
-            android:id="@+id/editMailApp"
+            android:id="@+id/editMailAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="800dp"
@@ -129,10 +131,10 @@
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editClasseApp" />
+            app:layout_constraintTop_toBottomOf="@+id/editClasseAppModif" />
 
         <TextView
-            android:id="@+id/nomApp"
+            android:id="@+id/nomAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -143,7 +145,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/prenomApp"
+            android:id="@+id/prenomAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -151,10 +153,10 @@
             android:text="Prenom :"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/nomApp" />
+            app:layout_constraintTop_toBottomOf="@+id/nomAppModif" />
 
         <TextView
-            android:id="@+id/adresseApp"
+            android:id="@+id/adresseAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -162,10 +164,10 @@
             android:text="Rue :"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/prenomApp" />
+            app:layout_constraintTop_toBottomOf="@+id/prenomAppModif" />
 
         <TextView
-            android:id="@+id/villeApp"
+            android:id="@+id/villeAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -173,10 +175,10 @@
             android:text="Ville :"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/adresseApp" />
+            app:layout_constraintTop_toBottomOf="@+id/adresseAppModif" />
 
         <TextView
-            android:id="@+id/cpApp"
+            android:id="@+id/cpAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
@@ -184,10 +186,10 @@
             android:text="Code Postal :"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/villeApp" />
+            app:layout_constraintTop_toBottomOf="@+id/villeAppModif" />
 
         <TextView
-            android:id="@+id/telApp"
+            android:id="@+id/telAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="600dp"
@@ -198,7 +200,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/dateDebutApp"
+            android:id="@+id/dateDebutAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="596dp"
@@ -206,10 +208,10 @@
             android:text="Date Début Formation :"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/telApp" />
+            app:layout_constraintTop_toBottomOf="@+id/telAppModif" />
 
         <TextView
-            android:id="@+id/mailApp"
+            android:id="@+id/mailAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="600dp"
@@ -217,10 +219,10 @@
             android:text="Mail :"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/classeApp" />
+            app:layout_constraintTop_toBottomOf="@+id/classeAppModif" />
 
         <TextView
-            android:id="@+id/classeApp"
+            android:id="@+id/classeAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="600dp"
@@ -228,7 +230,7 @@
             android:text="Classe :"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateDebutApp" />
+            app:layout_constraintTop_toBottomOf="@+id/dateDebutAppModif" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -245,7 +247,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="100dp"
             android:layout_marginTop="54dp"
-            android:text="Ajouter"
+            android:text="Modifier"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
