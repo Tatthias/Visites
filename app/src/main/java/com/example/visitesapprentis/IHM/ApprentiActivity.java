@@ -2,7 +2,6 @@ package com.example.visitesapprentis.IHM;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -43,10 +42,10 @@ public class ApprentiActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_apprenti);
 
-        bAjouter = (Button) findViewById(R.id.bAjouterApp);
+        bAjouter = (Button) findViewById(R.id.bModifierAppModif);
         bAjouter.setOnClickListener(ajouterListener);
 
-        bRetour = (Button) findViewById(R.id.bRetourApp);
+        bRetour = (Button) findViewById(R.id.bRetourAppModif);
         bRetour.setOnClickListener(retourListener);
 
         editNomApp = (EditText) findViewById(R.id.editNomApp);
@@ -94,10 +93,9 @@ public class ApprentiActivity extends AppCompatActivity {
 
             Date ladate = StringToDate(dateDebutApp);
 
-            apprentiDAO.open();
-
             unApp = new Apprenti(idApp, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, ladate, classeApp, mailApp);
 
+            apprentiDAO.open();
             apprentiDAO.insert(unApp);
             apprentiDAO.close();
 
