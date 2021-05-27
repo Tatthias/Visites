@@ -2,6 +2,7 @@ package com.example.visitesapprentis.IHM;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,6 +20,7 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
+
     private Button bAjouter;
     ListView listView;
     private ApprentiDAO apprentiDAO;
@@ -30,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listeapp);
 
-        listView = (ListView) findViewById(R.id.listeApprenti);
+        listView = (ListView) findViewById(R.id.listeVisites);
 
         apprentiDAO = new ApprentiDAO(getApplicationContext());
         apprentiDAO.open();
@@ -42,14 +44,15 @@ public class MainActivity extends AppCompatActivity {
         apprentiDAO.close();
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
 
-                //Dessert dessert = desserts.get(i);
-                for ( i = 0; i < idApp-1; i++) {
                     Intent intent = new Intent(MainActivity.this, VisitesActivity.class);
-                    startActivityForResult(intent, 0);
-                }
+
+                    intent.putExtra("id",position+1);
+                    Log.d("idApp",String.valueOf(position+1));
+                    startActivityForResult(intent,0);
             }
+
         });
         List<Apprenti> lesApprentis = new ArrayList<>();
         ApprentiDAO apprentiDAO = new ApprentiDAO(getApplicationContext());

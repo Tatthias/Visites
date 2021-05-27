@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import android.view.View;
 
 import java.text.DateFormat;
@@ -84,15 +85,14 @@ public class ApprentiDAO extends DAO<Apprenti> {
     }
     //modification de l'apprenti
 
-    public void delete(Apprenti app) {
-        String clauseWhere = new String();
-        db.delete(app.getNomApp(), clauseWhere, null);
+    public  void delete (Apprenti obj){
+        db.delete(TABLE_APPRENTI, COL_ID_APPRENTI + "=" +obj.getIdApp(),null);
+        Log.d("DeleteId",String.valueOf(obj.getIdApp()));
     }
     //suppression de l'apprenti en fonction de son numero
 
     public Apprenti read(long id) {
         String nomTable = TABLE_APPRENTI;
-        String selection = "COL_ID_APPRENTI = id";
         String nom;
         String prenom;
         String adresse;
@@ -103,28 +103,35 @@ public class ApprentiDAO extends DAO<Apprenti> {
         String classe;
         String mail;
         int idApp;
+        Apprenti unApp;
+        unApp = new Apprenti(0,null,null,null,null,null,null,null,null,null);
 
-        Cursor curseurQuery = db.query(nomTable, null, selection, null, null, null, null);
+
+        Cursor curseurQuery = db.query(nomTable, null, COL_ID_APPRENTI+"="+id, null, null, null, null);
         curseurQuery.moveToFirst();
-        idApp = curseurQuery.getInt(1);
-        nom = curseurQuery.getString(2);
-        prenom = curseurQuery.getString(3);
-        adresse = curseurQuery.getString(4);
-        ville = curseurQuery.getString(5);
-        cp = curseurQuery.getString(6);
-        tel = curseurQuery.getString(7);
-        date = curseurQuery.getString(8);
-        classe = curseurQuery.getString(9);
-        mail = curseurQuery.getString(10);
-        Date uneDate = null;
-        try {
-            uneDate = new SimpleDateFormat("dd-mm-yyyy").parse(date);
-        } catch (ParseException e) {
-            e.printStackTrace();
+        Log.d("CurseurReadId",String.valueOf(curseurQuery.getCount()));
+        if(!curseurQuery.isAfterLast())
+        {
+            idApp = curseurQuery.getInt(0);
+            nom = curseurQuery.getString(1);
+            prenom = curseurQuery.getString(2);
+            adresse = curseurQuery.getString(3);
+            ville = curseurQuery.getString(4);
+            cp = curseurQuery.getString(5);
+            tel = curseurQuery.getString(6);
+            date = curseurQuery.getString(7);
+            classe = curseurQuery.getString(8);
+            mail = curseurQuery.getString(9);
+            Date uneDate = null;
+            try {
+                uneDate = new SimpleDateFormat("yyyy/MM/dd").parse(date);
+            } catch (ParseException e) {
+                e.printStackTrace();
+            }
+            unApp = new Apprenti(idApp, nom, prenom, adresse, ville, cp, tel, uneDate, classe, mail);
         }
-        Apprenti unApp = new Apprenti(idApp, nom, prenom, adresse, ville, cp, tel, uneDate, classe, mail);
         curseurQuery.close();
-        return (unApp);
+        return unApp;
     }
     //recherche le numéro de l'apprenti dans la base et la retourne
 
@@ -172,4 +179,5 @@ public class ApprentiDAO extends DAO<Apprenti> {
         close();
         return desApprentis;
     }
+
 }
