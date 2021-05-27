@@ -166,8 +166,10 @@ public class ApprentiDAO extends DAO<Apprenti> {
 
             Apprenti unApp = new Apprenti(idApp, nom, prenom, adresse, ville, cp, tel, uneDate, classe, mail);
             desApprentis.add(unApp);
-            curseur.moveToLast();
+            curseur.moveToNext();
         }
+        curseur.close();
+        close();
         return desApprentis;
     }
 }
