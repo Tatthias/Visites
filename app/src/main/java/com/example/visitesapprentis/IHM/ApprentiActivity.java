@@ -54,8 +54,7 @@ public class ApprentiActivity extends AppCompatActivity {
         editVilleApp  = (EditText) findViewById(R.id.editVilleApp);
         editCPApp  = (EditText) findViewById(R.id.editCPApp);
         editTelApp  = (EditText) findViewById(R.id.editTelApp);
-        editDateDebutApp  = (EditText) findViewById(R.id.editDateDebutApp);
-        editClasseApp  = (EditText) findViewById(R.id.editClasseApp);
+        editClasseApp  = (EditText) findViewById(R.id.editMailApp);
         editMailApp  = (EditText) findViewById(R.id.editMailApp);
 
         apprentiDAO = new ApprentiDAO(getApplicationContext());

@@ -88,7 +88,7 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editDateDebutApp"
+            android:id="@+id/editClasseApp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="800dp"
@@ -108,17 +108,6 @@
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editVilleApp" />
-
-        <EditText
-            android:id="@+id/editClasseApp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="800dp"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editDateDebutApp" />
 
         <EditText
             android:id="@+id/editMailApp"
@@ -203,21 +192,10 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="596dp"
             android:layout_marginTop="40dp"
-            android:text="Date Début Formation :"
+            android:text="Classe :"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/telApp" />
-
-        <TextView
-            android:id="@+id/mailApp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="600dp"
-            android:layout_marginTop="40dp"
-            android:text="Mail :"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/classeApp" />
 
         <TextView
             android:id="@+id/classeApp"
@@ -225,7 +203,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="600dp"
             android:layout_marginTop="40dp"
-            android:text="Classe :"
+            android:text="Mail :"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dateDebutApp" />
