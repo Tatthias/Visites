@@ -80,8 +80,18 @@ public class ApprentiDAO extends DAO<Apprenti> {
 
     public void update(Apprenti app) {
         ContentValues valeur = new ContentValues();
-        String clauseWhere = new String();
-        db.update(app.getNomApp(), valeur, clauseWhere, null);
+
+        valeur.put(COL_NOMAPPRENTI, app.getNomApp());
+        valeur.put(COL_PRENOMAPPRENTI, app.getPrenomApp());
+        valeur.put(COL_ADRESSEAPPRENTI, app.getAddresseApp());
+        valeur.put(COL_VILLEAPPRENTI, app.getVilleApp());
+        valeur.put(COL_CPAPPRENTI, app.getClasseApp());
+        valeur.put(COL_TELAPPRENTI, app.getTelApp());
+        valeur.put(COL_DATEDEBUTAPPRENTI,getDateTime());
+        valeur.put(COL_CLASSEAPPRENTI, app.getClasseApp());
+        valeur.put(COL_MAILAPPRENTI, app.getMailApp());
+
+        db.update(TABLE_APPRENTI, valeur, "id ="+app.getIdApp(), null);
     }
     //modification de l'apprenti
 
