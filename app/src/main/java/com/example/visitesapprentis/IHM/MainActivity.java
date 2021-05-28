@@ -48,8 +48,8 @@ public class MainActivity extends AppCompatActivity {
 
                     Intent intent = new Intent(MainActivity.this, VisitesActivity.class);
 
-                    intent.putExtra("id",position+1);
-                    Log.d("idApp",String.valueOf(position+1));
+                    intent.putExtra("position",position);
+                    Log.d("idApp",String.valueOf(position));
                     startActivityForResult(intent,0);
             }
 

@@ -23,7 +23,7 @@ import com.example.visitesapprentis.IHM.MainActivity;
 public class VisitesActivity extends AppCompatActivity {
 
 
-    private int idAppVis;
+    private int position;
     private Apprenti unApp;
     private ApprentiDAO apprentiDAO;
     private Button bSuppression;
@@ -33,11 +33,12 @@ public class VisitesActivity extends AppCompatActivity {
     private Button bSupprimer;
 
 
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visites);
         
-        Log.d("idAppVis", String.valueOf(idAppVis));
+        Log.d("idAppVis", String.valueOf(position));
 
         bSuppression= (Button) findViewById(R.id.bSupprimerApp);
         bSuppression.setOnClickListener(suppressionListener);
@@ -48,6 +49,17 @@ public class VisitesActivity extends AppCompatActivity {
         bModifier = (Button) findViewById(R.id.bModifierApp);
         bModifier.setOnClickListener(modifierListener);
 
+        Bundle extra = getIntent().getExtras();
+        if(extra.getInt("position")>= 0)
+        {
+            position = extra.getInt("position");
+            Log.d("Count2",String.valueOf(position));
+        }
+        apprentiDAO = new ApprentiDAO(getApplicationContext());
+        apprentiDAO.open();
+        unApp = apprentiDAO.readPosition(position);
+        Log.d("nom",String.valueOf(unApp.getNomApp()));
+        apprentiDAO.close();
     }
 
     private View.OnClickListener retourListener = new View.OnClickListener() {
@@ -71,7 +83,7 @@ public class VisitesActivity extends AppCompatActivity {
         public void onClick(View v) {
             apprentiDAO = new ApprentiDAO(getApplicationContext());
             apprentiDAO.open();
-            unApp = apprentiDAO.read(idAppVis);
+            unApp = apprentiDAO.readPosition(position);
 
             apprentiDAO.delete(unApp);
             apprentiDAO.close();

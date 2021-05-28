@@ -135,8 +135,46 @@ public class ApprentiDAO extends DAO<Apprenti> {
     }
     //recherche le numéro de l'apprenti dans la base et la retourne
 
+    public Apprenti readPosition(int id) {
+        Apprenti unApp;
+        String nom;
+        String prenom;
+        String adresse;
+        String ville;
+        String cp;
+        String tel;
+        String date;
+        String classe;
+        String mail;
+        int idApp;
+
+        Cursor curseur = db.query(TABLE_APPRENTI, null, null, null, null, null, null);
+
+        curseur.moveToFirst();
+        curseur.moveToPosition(id);
+        idApp = curseur.getInt(0);
+        nom = curseur.getString(1);
+        prenom = curseur.getString(2);
+        adresse = curseur.getString(3);
+        ville = curseur.getString(4);
+        cp = curseur.getString(5);
+        tel = curseur.getString(6);
+        date = curseur.getString(7);
+        classe = curseur.getString(8);
+        mail = curseur.getString(9);
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
+        Date uneDate = null;
+        try {
+            uneDate = formatter.parse(date);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        unApp = new Apprenti(idApp, nom, prenom, adresse, ville, cp, tel, uneDate, classe, mail);
+        return unApp;
+    }
+
     public List<Apprenti> read() {
-        String nomTable = TABLE_APPRENTI;
         List<Apprenti> desApprentis = new ArrayList<>();
         String nom;
         String prenom;
@@ -150,7 +188,7 @@ public class ApprentiDAO extends DAO<Apprenti> {
         int idApp;
         boolean verif;
 
-        Cursor curseur = db.query(nomTable, null, null, null, null, null, null);
+        Cursor curseur = db.query(TABLE_APPRENTI, null, null, null, null, null, null);
         curseur.moveToFirst();
         for (int i = 0; i < curseur.getCount(); i++) {
             idApp = curseur.getInt(0);
