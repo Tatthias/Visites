@@ -96,7 +96,7 @@
             android:layout_marginStart="800dp"
             android:layout_marginTop="20dp"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="date|textPersonName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/editTelAppModif" />
 

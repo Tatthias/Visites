@@ -17,12 +17,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.visitesapprentis.DAO.ApprentiDAO;
 import com.example.visitesapprentis.Metier.Apprenti;
 import com.example.visitesapprentis.R;
+import com.example.visitesapprentis.IHM.MainActivity;
 
 
 public class VisitesActivity extends AppCompatActivity {
 
 
-    private int idAppSupp;
+    private int idAppVis;
     private Apprenti unApp;
     private ApprentiDAO apprentiDAO;
     private Button bSuppression;
@@ -35,22 +36,18 @@ public class VisitesActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visites);
+        
+        Log.d("idAppVis", String.valueOf(idAppVis));
+
         bSuppression= (Button) findViewById(R.id.bSupprimerApp);
         bSuppression.setOnClickListener(suppressionListener);
-
-        Bundle extra = getIntent().getExtras();
-        if(extra.getInt("id")>= 0)
-        {
-            idAppSupp = extra.getInt("id");
-            Log.d("Count2",String.valueOf(idAppSupp));
-        }
 
         bRetour = (Button) findViewById(R.id.bRetourApp2);
         bRetour.setOnClickListener(retourListener);
 
         bModifier = (Button) findViewById(R.id.bModifierApp);
+        bModifier.setOnClickListener(modifierListener);
 
-        bSupprimer = (Button) findViewById(R.id.bSupprimerApp);
     }
 
     private View.OnClickListener retourListener = new View.OnClickListener() {
@@ -61,24 +58,20 @@ public class VisitesActivity extends AppCompatActivity {
         }
     };
 
-
-
-        TextView prenom = (TextView)findViewById(R.id.TextViewPrenom);
-
-
-    private final View.OnClickListener modifier = new View.OnClickListener() {
+    private final View.OnClickListener modifierListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {
-            Intent intent = new Intent();
+            Intent intent = new Intent( VisitesActivity.this, ApprentiModifAcivity.class);
+            startActivityForResult(intent, 0);
         }
-
     };
+
     private View.OnClickListener suppressionListener = new View.OnClickListener() {
 
         public void onClick(View v) {
             apprentiDAO = new ApprentiDAO(getApplicationContext());
             apprentiDAO.open();
-            unApp = apprentiDAO.read(idAppSupp);
+            unApp = apprentiDAO.read(idAppVis);
 
             apprentiDAO.delete(unApp);
             apprentiDAO.close();
