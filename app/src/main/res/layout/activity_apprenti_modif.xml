@@ -34,6 +34,28 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
+        <TextView
+            android:id="@+id/CPAppModif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="596dp"
+            android:layout_marginTop="40dp"
+            android:text="CP :"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/editCPAppModif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="800dp"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
         <EditText
             android:id="@+id/editNomAppModif"
             android:layout_width="wrap_content"
@@ -83,44 +105,22 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="800dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="80dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <EditText
-            android:id="@+id/editDateDebutAppModif"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="800dp"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:inputType="date|textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editTelAppModif" />
-
-        <EditText
-            android:id="@+id/editCPAppModif"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="260dp"
-            android:layout_marginTop="20dp"
-            android:ems="10"
-            android:inputType="textPersonName"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editVilleAppModif" />
-
-        <EditText
             android:id="@+id/editClasseAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="800dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="21dp"
             android:ems="10"
             android:inputType="textPersonName"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/editDateDebutAppModif" />
+            app:layout_constraintTop_toBottomOf="@+id/editTelAppModif" />
 
         <EditText
             android:id="@+id/editMailAppModif"
@@ -178,37 +178,15 @@
             app:layout_constraintTop_toBottomOf="@+id/adresseAppModif" />
 
         <TextView
-            android:id="@+id/cpAppModif"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="100dp"
-            android:layout_marginTop="40dp"
-            android:text="Code Postal :"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/villeAppModif" />
-
-        <TextView
             android:id="@+id/telAppModif"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="600dp"
-            android:layout_marginTop="40dp"
+            android:layout_marginStart="596dp"
+            android:layout_marginTop="100dp"
             android:text="Telephone :"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/dateDebutAppModif"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="596dp"
-            android:layout_marginTop="40dp"
-            android:text="Date Début Formation :"
-            android:textSize="16sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/telAppModif" />
 
         <TextView
             android:id="@+id/mailAppModif"
@@ -226,11 +204,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="600dp"
-            android:layout_marginTop="40dp"
             android:text="Classe :"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/dateDebutAppModif" />
+            tools:layout_editor_absoluteY="163dp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

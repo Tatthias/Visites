@@ -86,13 +86,12 @@ public class ApprentiActivity extends AppCompatActivity {
             String villeApp = editVilleApp.getText().toString();
             String cpApp = editCPApp.getText().toString();
             String telApp = editTelApp.getText().toString();
-            String dateDebutApp = editNomApp.getText().toString();
-            String classeApp = editNomApp.getText().toString();
-            String mailApp = editNomApp.getText().toString();
+            String classeApp = editClasseApp.getText().toString();
+            String mailApp = editMailApp.getText().toString();
 
-            Date ladate = StringToDate(dateDebutApp);
+            Date laDate = unApp.getDateDebutApp();
 
-            unApp = new Apprenti(idApp, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, ladate, classeApp, mailApp);
+            unApp = new Apprenti(idApp, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp);
 
             apprentiDAO.open();
             apprentiDAO.insert(unApp);

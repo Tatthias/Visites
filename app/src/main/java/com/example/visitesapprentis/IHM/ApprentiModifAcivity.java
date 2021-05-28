@@ -7,12 +7,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.visitesapprentis.DAO.ApprentiDAO;
 import com.example.visitesapprentis.Metier.Apprenti;
 import com.example.visitesapprentis.R;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ApprentiModifAcivity extends AppCompatActivity {
 
@@ -43,7 +49,8 @@ public class ApprentiModifAcivity extends AppCompatActivity {
         bRetour = (Button) findViewById(R.id.bRetourAppModif);
         bRetour.setOnClickListener(retourListener);
 
-        bModifier = (Button) findViewById(R.id.bModifierApp);
+        bModifier = (Button) findViewById(R.id.bModifierAppModif);
+        bModifier.setOnClickListener(modifierListener);
 
         Bundle extra = getIntent().getExtras();
         if(extra.getInt("position")>= 0)
@@ -52,12 +59,9 @@ public class ApprentiModifAcivity extends AppCompatActivity {
             Log.d("Count2",String.valueOf(position));
         }
 
-        Log.d("TEST", "L'id de l'apprenti: " + String.valueOf(idAppSupp));
-
         apprentiDAO = new ApprentiDAO(getApplicationContext());
         apprentiDAO.open();
         unApp = apprentiDAO.readPosition(position);
-
 
         editNomApp = (EditText) findViewById(R.id.editNomAppModif);
         editNomApp.setText(unApp.getNomApp());
@@ -80,10 +84,47 @@ public class ApprentiModifAcivity extends AppCompatActivity {
         apprentiDAO.close();
     }
 
-    private View.OnClickListener retourListener = new View.OnClickListener() {
+    private final View.OnClickListener retourListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(ApprentiModifAcivity.this, VisitesActivity.class);
+            intent.putExtra("position",position);
+            startActivityForResult(intent, 0);
+        }
+    };
+
+    private final View.OnClickListener modifierListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
+
+            String nomApp = editNomApp.getText().toString();
+            String prenomApp = editPrenomApp.getText().toString();
+            String addresseApp = editRueApp.getText().toString();
+            String villeApp = editVilleApp.getText().toString();
+            String cpApp = editCPApp.getText().toString();
+            String telApp = editTelApp.getText().toString();
+            String classeApp = editClasseApp.getText().toString();
+            String mailApp = editMailApp.getText().toString();
+
+            Date laDate = unApp.getDateDebutApp();
+
+            apprentiDAO = new ApprentiDAO(getApplicationContext());
+
+            unApp = new Apprenti(position, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp);
+
+            apprentiDAO.open();
+            apprentiDAO.update(unApp);
+            apprentiDAO.close();
+
+            Toast.makeText(getApplicationContext(), "Apprenti modifié", Toast.LENGTH_LONG).show();
+
+            Log.d("Fils de pute", String.valueOf(position));
+            Log.d("ttes", String.valueOf(unApp.getIdApp()));
+
+            finish();
+            Intent intent = new Intent(ApprentiModifAcivity.this, VisitesActivity.class);
+            intent.putExtra("position",position);
             startActivityForResult(intent, 0);
         }
     };
