@@ -74,6 +74,8 @@ public class VisitesActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent( VisitesActivity.this, ApprentiModifAcivity.class);
+
+            intent.putExtra("position",position);
             startActivityForResult(intent, 0);
         }
     };

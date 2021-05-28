@@ -23,6 +23,7 @@ public class ApprentiModifAcivity extends AppCompatActivity {
 
     private Apprenti unApp;
     private ApprentiDAO apprentiDAO;
+    private int position;
 
     private EditText editNomApp;
     private EditText editPrenomApp;
@@ -31,7 +32,7 @@ public class ApprentiModifAcivity extends AppCompatActivity {
     private EditText editCPApp;
     private EditText editTelApp;
     private EditText editClasseApp;
-    private EditText editDateDebutApp;
+
     private EditText editMailApp;
 
     @Override
@@ -44,11 +45,18 @@ public class ApprentiModifAcivity extends AppCompatActivity {
 
         bModifier = (Button) findViewById(R.id.bModifierApp);
 
+        Bundle extra = getIntent().getExtras();
+        if(extra.getInt("position")>= 0)
+        {
+            position = extra.getInt("position");
+            Log.d("Count2",String.valueOf(position));
+        }
+
         Log.d("TEST", "L'id de l'apprenti: " + String.valueOf(idAppSupp));
 
         apprentiDAO = new ApprentiDAO(getApplicationContext());
         apprentiDAO.open();
-        unApp = apprentiDAO.read(idAppSupp);
+        unApp = apprentiDAO.readPosition(position);
 
 
         editNomApp = (EditText) findViewById(R.id.editNomAppModif);
@@ -56,19 +64,17 @@ public class ApprentiModifAcivity extends AppCompatActivity {
         editPrenomApp = (EditText) findViewById(R.id.editPrenomAppModif);
         editPrenomApp.setText(unApp.getPrenomApp());
         editRueApp  = (EditText) findViewById(R.id.editRueAppModif);
-        //editRueApp.setText(unApp.getAddresseApp());
+        editRueApp.setText(unApp.getAddresseApp());
         editVilleApp  = (EditText) findViewById(R.id.editVilleAppModif);
-        //editVilleApp.setText(unApp.getVilleApp());
+        editVilleApp.setText(unApp.getVilleApp());
         editCPApp  = (EditText) findViewById(R.id.editCPAppModif);
-        //editCPApp.setText(unApp.getCpApp());
+        editCPApp.setText(unApp.getCpApp());
         editTelApp  = (EditText) findViewById(R.id.editTelAppModif);
-        //editTelApp.setText(unApp.getTelApp());
-        editDateDebutApp  = (EditText) findViewById(R.id.editDateDebutAppModif);
-        //editDateDebutApp.setText(unApp.getDateDebutApp().toString());
+        editTelApp.setText(unApp.getTelApp());
         editClasseApp  = (EditText) findViewById(R.id.editClasseAppModif);
-        //editClasseApp.setText(unApp.getClasseApp());
+        editClasseApp.setText(unApp.getClasseApp());
         editMailApp  = (EditText) findViewById(R.id.editMailAppModif);
-        //editMailApp.setText(unApp.getMailApp());
+        editMailApp.setText(unApp.getMailApp());
 
 
         apprentiDAO.close();
