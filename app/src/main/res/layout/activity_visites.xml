@@ -19,7 +19,6 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="64dp"
             android:layout_marginTop="26dp"
-            android:text="Visites :"
             android:textSize="24sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -35,13 +34,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4" />
 
-        <TextView
-            android:id="@+id/TextViewPrenom"
-            android:layout_width="99dp"
-            android:layout_height="31dp"
-            tools:layout_editor_absoluteX="193dp"
-            tools:layout_editor_absoluteY="28dp" />
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -51,11 +43,22 @@
         app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
 
         <Button
+            android:id="@+id/bAjouterVisite"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="52dp"
+            android:background="#FFFFFF"
+            android:text="Ajouter une visite"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
             android:id="@+id/bRetourApp2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="52dp"
-            android:layout_marginEnd="168dp"
+            android:layout_marginTop="54dp"
+            android:layout_marginEnd="100dp"
             android:text="Retour"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -64,23 +67,24 @@
             android:id="@+id/bSupprimerApp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="528dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="54dp"
             android:background="#FFFFFF"
             android:text="Supprimer l'apprenti"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bModifierApp"
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
             android:id="@+id/bModifierApp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="120dp"
-            android:layout_marginTop="52dp"
+            android:layout_marginStart="100dp"
+            android:layout_marginTop="54dp"
             android:background="#FFFFFF"
             android:text="Modifier l'apprenti"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bAjouterVisite"
             app:layout_constraintTop_toTopOf="parent" />
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -95,9 +99,10 @@
             android:id="@+id/textView2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="516dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="524dp"
             android:layout_marginTop="20dp"
-            android:text="Liste des visites"
+            android:text="Liste des visites :"
             android:textColor="#FFFFFF"
             android:textSize="30sp"
             app:layout_constraintStart_toStartOf="parent"

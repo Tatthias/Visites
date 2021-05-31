@@ -4,13 +4,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
-import android.view.View;
-import android.widget.Button;
 
 
 import androidx.appcompat.app.AlertDialog;
@@ -19,7 +15,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.visitesapprentis.DAO.ApprentiDAO;
 import com.example.visitesapprentis.Metier.Apprenti;
 import com.example.visitesapprentis.R;
-import com.example.visitesapprentis.IHM.MainActivity;
 
 
 public class VisitesActivity extends AppCompatActivity {
@@ -34,15 +29,13 @@ public class VisitesActivity extends AppCompatActivity {
     private Button bModifier;
     private Button bSupprimer;
 
-
+    private TextView textView;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visites);
-        
-        Log.d("idAppVis", String.valueOf(position));
 
-        bSuppression= (Button) findViewById(R.id.bSupprimerApp);
+        bSuppression = (Button) findViewById(R.id.bSupprimerApp);
         bSuppression.setOnClickListener(suppressionListener);
 
         bRetour = (Button) findViewById(R.id.bRetourApp2);
@@ -51,23 +44,24 @@ public class VisitesActivity extends AppCompatActivity {
         bModifier = (Button) findViewById(R.id.bModifierApp);
         bModifier.setOnClickListener(modifierListener);
 
+        textView = (TextView) findViewById(R.id.textView4);
+
         Bundle extra = getIntent().getExtras();
         if(extra.getInt("position")>= 0)
         {
             position = extra.getInt("position");
-            Log.d("Count2",String.valueOf(position));
         }
         apprentiDAO = new ApprentiDAO(getApplicationContext());
         apprentiDAO.open();
         unApp = apprentiDAO.readPosition(position);
-        Log.d("nom",String.valueOf(unApp.getNomApp()));
+        textView.setText("Liste des visites de "+ unApp.getNomApp() + " " + unApp.getPrenomApp() + " :");
         apprentiDAO.close();
     }
 
     private View.OnClickListener retourListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(VisitesActivity.this, MainActivity.class);
+            Intent intent = new Intent(VisitesActivity.this, ListeApprentiActivity.class);
             startActivityForResult(intent, 0);
         }
     };
@@ -76,7 +70,6 @@ public class VisitesActivity extends AppCompatActivity {
         @Override
         public void onClick(View v) {
             Intent intent = new Intent( VisitesActivity.this, ApprentiModifAcivity.class);
-
             intent.putExtra("position",position);
             startActivityForResult(intent, 0);
         }
@@ -98,7 +91,7 @@ public class VisitesActivity extends AppCompatActivity {
                             apprentiDAO.delete(unApp);
                             apprentiDAO.close();
                             finish();
-                            Intent intent = new Intent(VisitesActivity.this, MainActivity.class);
+                            Intent intent = new Intent(VisitesActivity.this, ListeApprentiActivity.class);
                             startActivityForResult(intent, 0);
                         }
                     })

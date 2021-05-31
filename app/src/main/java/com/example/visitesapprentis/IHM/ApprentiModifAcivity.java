@@ -56,7 +56,6 @@ public class ApprentiModifAcivity extends AppCompatActivity {
         if(extra.getInt("position")>= 0)
         {
             position = extra.getInt("position");
-            Log.d("Count2",String.valueOf(position));
         }
 
         apprentiDAO = new ApprentiDAO(getApplicationContext());
@@ -111,16 +110,14 @@ public class ApprentiModifAcivity extends AppCompatActivity {
 
             apprentiDAO = new ApprentiDAO(getApplicationContext());
 
-            unApp = new Apprenti(position, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp);
+            unApp = new Apprenti(position+1, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp);
 
+            Log.d("unePosition", String.valueOf(position));
             apprentiDAO.open();
             apprentiDAO.update(unApp);
             apprentiDAO.close();
 
             Toast.makeText(getApplicationContext(), "Apprenti modifié", Toast.LENGTH_LONG).show();
-
-            Log.d("Fils de pute", String.valueOf(position));
-            Log.d("ttes", String.valueOf(unApp.getIdApp()));
 
             finish();
             Intent intent = new Intent(ApprentiModifAcivity.this, VisitesActivity.class);

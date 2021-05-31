@@ -54,13 +54,11 @@ public class ApprentiActivity extends AppCompatActivity {
         editVilleApp  = (EditText) findViewById(R.id.editVilleApp);
         editCPApp  = (EditText) findViewById(R.id.editCPApp);
         editTelApp  = (EditText) findViewById(R.id.editTelApp);
-        editClasseApp  = (EditText) findViewById(R.id.editMailApp);
+        editClasseApp  = (EditText) findViewById(R.id.editClasseApp);
         editMailApp  = (EditText) findViewById(R.id.editMailApp);
 
         apprentiDAO = new ApprentiDAO(getApplicationContext());
         apprentiDAO.open();
-
-
         for (Apprenti unApp : apprentiDAO.read()) {
             idApp = unApp.getIdApp() + 1;
         }
@@ -70,7 +68,7 @@ public class ApprentiActivity extends AppCompatActivity {
     private View.OnClickListener retourListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(ApprentiActivity.this, MainActivity.class);
+            Intent intent = new Intent(ApprentiActivity.this, ListeApprentiActivity.class);
             startActivityForResult(intent, 0);
         }
     };
@@ -89,7 +87,7 @@ public class ApprentiActivity extends AppCompatActivity {
             String classeApp = editClasseApp.getText().toString();
             String mailApp = editMailApp.getText().toString();
 
-            Date laDate = unApp.getDateDebutApp();
+            Date laDate = new Date(31/05/2021);
 
             unApp = new Apprenti(idApp, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp);
 
@@ -98,7 +96,7 @@ public class ApprentiActivity extends AppCompatActivity {
             apprentiDAO.close();
 
             finish();
-            Intent intent = new Intent(ApprentiActivity.this, MainActivity.class);
+            Intent intent = new Intent(ApprentiActivity.this, ListeApprentiActivity.class);
             startActivityForResult(intent, 0);
         }
 

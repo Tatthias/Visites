@@ -19,6 +19,7 @@
         <activity android:name=".IHM.ApprentiActivity"></activity>
         <activity android:name=".IHM.VisitesActivity"></activity>
         <activity android:name=".IHM.ApprentiModifAcivity"></activity>
+        <activity android:name=".IHM.ListeApprentiActivity"></activity>
     </application>
 
 </manifest>
