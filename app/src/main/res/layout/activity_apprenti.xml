@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <TextView
-            android:id="@+id/textView2"
+            android:id="@+id/textView"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="516dp"
@@ -224,6 +224,7 @@
             android:layout_marginStart="100dp"
             android:layout_marginTop="54dp"
             android:text="Ajouter"
+            android:theme="@style/AppTheme.Button"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

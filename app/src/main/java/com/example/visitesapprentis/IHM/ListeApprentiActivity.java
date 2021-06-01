@@ -35,7 +35,7 @@ public class ListeApprentiActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_listeapp);
 
-        listView = (ListView) findViewById(R.id.listeVisites);
+        listView = (ListView) findViewById(R.id.listeApprentis);
 
         apprentiDAO = new ApprentiDAO(getApplicationContext());
         apprentiDAO.open();
@@ -65,7 +65,7 @@ public class ListeApprentiActivity extends AppCompatActivity {
 
         listView.setAdapter(arrayAdapter);
 
-        bAjouter = (Button) findViewById(R.id.bModifierApp);
+        bAjouter = (Button) findViewById(R.id.bAjouterApp);
         bAjouter.setOnClickListener(ajouterListener);
 
         bRetour = (Button) findViewById(R.id.bRetour);

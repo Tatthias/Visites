@@ -28,7 +28,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="516dp"
                 android:layout_marginTop="20dp"
-                android:text="Liste des apprentis"
+                android:text="Liste des entreprises"
                 android:textColor="#FFFFFF"
                 android:textSize="30sp"
                 app:layout_constraintStart_toStartOf="parent"
@@ -43,7 +43,7 @@
             app:layout_constraintTop_toBottomOf="@+id/linearLayout">
 
             <ListView
-                android:id="@+id/listeApprentis"
+                android:id="@+id/listeEntreprise"
                 android:layout_width="1168dp"
                 android:layout_height="322dp"
                 android:layout_marginStart="64dp"
@@ -59,7 +59,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="64dp"
                 android:layout_marginTop="26dp"
-                android:text="Nom et prénom :"
+                android:text="Nom  :"
                 android:textSize="24sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -69,16 +69,15 @@
             android:layout_width="match_parent"
             android:layout_height="162dp"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+            app:layout_constraintStart_toStartOf="parent">
 
             <Button
-                android:id="@+id/bAjouterApp"
+                android:id="@+id/bAjouterEnt"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="100dp"
                 android:layout_marginTop="54dp"
-                android:text="Nouvel(le) apprenti(e)"
+                android:text="Nouvelle entreprise"
                 android:theme="@style/AppTheme.Button"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

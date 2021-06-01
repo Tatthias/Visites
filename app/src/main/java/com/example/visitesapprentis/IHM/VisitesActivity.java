@@ -41,10 +41,10 @@ public class VisitesActivity extends AppCompatActivity {
         bRetour = (Button) findViewById(R.id.bRetourApp2);
         bRetour.setOnClickListener(retourListener);
 
-        bModifier = (Button) findViewById(R.id.bModifierApp);
+        bModifier = (Button) findViewById(R.id.bModifierEnt);
         bModifier.setOnClickListener(modifierListener);
 
-        textView = (TextView) findViewById(R.id.textView4);
+        textView = (TextView) findViewById(R.id.textView2);
 
         Bundle extra = getIntent().getExtras();
         if(extra.getInt("position")>= 0)

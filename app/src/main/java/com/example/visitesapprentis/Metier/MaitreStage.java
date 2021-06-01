@@ -7,13 +7,15 @@ public class MaitreStage {
     private String addresseMai;
     private String telMai;
     private String mailMai;
+    private Entreprise uneEnt;
 
-    public MaitreStage(String nomMai, String prenomMai, String addresseMai, String telMai, String mailMai) {
+    public MaitreStage(String nomMai, String prenomMai, String addresseMai, String telMai, String mailMai, Entreprise uneEnt) {
         this.nomMai = nomMai;
         this.prenomMai = prenomMai;
         this.addresseMai = addresseMai;
         this.telMai = telMai;
         this.mailMai = mailMai;
+        this.uneEnt = uneEnt;
     }
 
     public String getNomMai() {
@@ -54,5 +56,13 @@ public class MaitreStage {
 
     public void setMailMai(String mailMai) {
         this.mailMai = mailMai;
+    }
+
+    public Entreprise getUneEnt() {
+        return uneEnt;
+    }
+
+    public void setUneEnt(Entreprise uneEnt) {
+        this.uneEnt = uneEnt;
     }
 }

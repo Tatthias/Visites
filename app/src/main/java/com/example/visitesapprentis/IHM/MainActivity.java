@@ -12,6 +12,7 @@ import com.example.visitesapprentis.R;
 public class MainActivity extends AppCompatActivity {
 
     private Button bApprenti;
+    private Button bEntreprise;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,12 +22,23 @@ public class MainActivity extends AppCompatActivity {
 
         bApprenti = (Button) findViewById(R.id.buttonApprenti);
         bApprenti.setOnClickListener(apprentiListener);
+
+        bEntreprise = (Button) findViewById(R.id.buttonEntreprise);
+        bEntreprise.setOnClickListener(entrepriseListener);
     }
 
     private View.OnClickListener apprentiListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(MainActivity.this, ListeApprentiActivity.class);
+            startActivityForResult(intent, 0);
+        }
+    };
+
+    private View.OnClickListener entrepriseListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(MainActivity.this, ListeEntrepriseActivity.class);
             startActivityForResult(intent, 0);
         }
     };
