@@ -18,6 +18,7 @@ public class EntrepriseDAO extends DAO<Entreprise>{
 
     //déclaration des outils nécessaire à la base
     private static final String TABLE_ENTREPRISE = "ENTREPRISE";
+    private static final String COL_IDENTREPRISE = "idEnt";
     private static final String COL_NOMENTREPRISE = "nomEnt";
     private static final String COL_ADRESSEENTREPRISE = "adresseEnt";
     private static final String COL_CPENTREPRISE = "cpEnt";
@@ -39,6 +40,7 @@ public class EntrepriseDAO extends DAO<Entreprise>{
     @Override
     public void insert(Entreprise obj) {
         ContentValues valeur = new ContentValues();
+        valeur.put(COL_IDENTREPRISE, obj.getIdEnt());
         valeur.put(COL_NOMENTREPRISE, obj.getNomEnt());
         valeur.put(COL_ADRESSEENTREPRISE, obj.getAdresseEnt());
         valeur.put(COL_CPENTREPRISE, obj.getCpEnt());
@@ -51,13 +53,14 @@ public class EntrepriseDAO extends DAO<Entreprise>{
     @Override
     public void update(Entreprise obj) {
         ContentValues valeur = new ContentValues();
+        valeur.put(COL_IDENTREPRISE, obj.getIdEnt());
         valeur.put(COL_NOMENTREPRISE, obj.getNomEnt());
         valeur.put(COL_ADRESSEENTREPRISE, obj.getAdresseEnt());
         valeur.put(COL_CPENTREPRISE, obj.getCpEnt());
         valeur.put(COL_VILLEENTREPRISE, obj.getVilleEnt());
         valeur.put(COL_TELENTREPRISE, obj.getTelEnt());
 
-        db.update(TABLE_ENTREPRISE, valeur, COL_NOMENTREPRISE + "=" + obj.getNomEnt(), null);
+        db.update(TABLE_ENTREPRISE, valeur, COL_IDENTREPRISE + "=" + obj.getIdEnt(), null);
     }
 
     @Override
@@ -67,6 +70,7 @@ public class EntrepriseDAO extends DAO<Entreprise>{
 
     public List<Entreprise> read(){
         List<Entreprise> lesEntreprises = new ArrayList<>();
+        int id;
         String nom;
         String adresse;
         String cp;
@@ -77,13 +81,14 @@ public class EntrepriseDAO extends DAO<Entreprise>{
         curseur.moveToFirst();
 
         for(int i = 0; i < curseur.getCount(); i++){
-            nom = curseur.getString(0);
-            adresse = curseur.getString(1);
-            cp = curseur.getString(2);
-            ville = curseur.getString(3);
-            tel = curseur.getString(4);
+            id = curseur.getInt(0);
+            nom = curseur.getString(1);
+            adresse = curseur.getString(2);
+            cp = curseur.getString(3);
+            ville = curseur.getString(4);
+            tel = curseur.getString(5);
 
-            Entreprise uneEnt = new Entreprise(nom, adresse, cp, ville, tel);
+            Entreprise uneEnt = new Entreprise(id, nom, adresse, cp, ville, tel);
             lesEntreprises.add(uneEnt);
             curseur.moveToNext();
         }

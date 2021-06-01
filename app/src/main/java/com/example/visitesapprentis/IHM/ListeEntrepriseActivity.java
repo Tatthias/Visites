@@ -47,11 +47,11 @@ public class ListeEntrepriseActivity extends AppCompatActivity {
 
         listView.setAdapter(arrayAdapter);
 
-        //bAjouter = (Button) findViewById(R.id.bAjouterEnt);
-        //bAjouter.setOnClickListener(ajouterListener);
+        bAjouter = (Button) findViewById(R.id.bAjouterEnt);
+        bAjouter.setOnClickListener(ajouterListener);
 
-        //bRetour = (Button) findViewById(R.id.bRetour);
-        //bRetour.setOnClickListener(retourListener);
+        bRetour = (Button) findViewById(R.id.bRetour);
+        bRetour.setOnClickListener(retourListener);
     }
 
     private View.OnClickListener retourListener = new View.OnClickListener() {
@@ -63,7 +63,7 @@ public class ListeEntrepriseActivity extends AppCompatActivity {
 
     private View.OnClickListener ajouterListener = new View.OnClickListener() {
         public void onClick(View view) {
-            Intent intent = new Intent(ListeEntrepriseActivity.this, ApprentiActivity.class);
+            Intent intent = new Intent(ListeEntrepriseActivity.this, NewEntrepriseActivity.class);
             startActivityForResult(intent, 0);
         }
     };
