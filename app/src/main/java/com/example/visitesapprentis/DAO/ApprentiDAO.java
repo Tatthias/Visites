@@ -67,7 +67,7 @@ public class ApprentiDAO extends DAO<Apprenti> {
         valeur.put(COL_PRENOMAPPRENTI, app.getPrenomApp());
         valeur.put(COL_ADRESSEAPPRENTI, app.getAddresseApp());
         valeur.put(COL_VILLEAPPRENTI, app.getVilleApp());
-        valeur.put(COL_CPAPPRENTI, app.getClasseApp());
+        valeur.put(COL_CPAPPRENTI, app.getCpApp());
         valeur.put(COL_TELAPPRENTI, app.getTelApp());
         valeur.put(COL_DATEDEBUTAPPRENTI,getDateTime());
         valeur.put(COL_CLASSEAPPRENTI, app.getClasseApp());

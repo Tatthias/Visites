@@ -110,7 +110,7 @@ public class ApprentiModifAcivity extends AppCompatActivity {
 
             apprentiDAO = new ApprentiDAO(getApplicationContext());
 
-            unApp = new Apprenti(position+1, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp);
+            unApp = new Apprenti(position+2, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp);
 
             Log.d("unePosition", String.valueOf(position));
             apprentiDAO.open();
