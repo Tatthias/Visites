@@ -28,6 +28,11 @@ public class SQLiteVisitesApprentis extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE Entreprise (nomEnt VARCHAR(100), adresseEnt VARCHAR(100), cpApp VARCHAR(100), villeEnt VARCHAR(100), telApp CHAR(10))");
             db.execSQL("INSERT INTO Entreprise VALUES ('Sarl Cym Developpement', '2 rue de la fontaine d Adam', '86202', 'Loudun', '0000000000')");
             db.execSQL("INSERT INTO Entreprise VALUES ('Officentrale', '51 rue Chrales Gounod', '86200', 'loudun', '1111111111')");
+
+            db.execSQL("DROP TABLE IF EXISTS Referent");
+            db.execSQL("CREATE TABLE Referent (idRef INTEGER PRIMARY KEY AUTOINCREMENT, nomRef VARCHAR(100),  prenomRef VARCHAR(100), addresseRef VARCHAR(100),  telRef VARCHAR(10))");
+            db.execSQL("INSERT INTO Referent VALUES (1, 'Pierre', 'Paul', 'loudun', '1111111111')");
+            db.execSQL("INSERT INTO Referent VALUES (2, 'Jack', 'Daniels', 'loudun', '1111111111')");
         } catch (Exception e) {
             e.printStackTrace();
         }
