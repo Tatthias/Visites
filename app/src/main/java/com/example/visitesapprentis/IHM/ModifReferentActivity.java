@@ -1,5 +1,6 @@
 package com.example.visitesapprentis.IHM;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.visitesapprentis.DAO.ApprentiDAO;
@@ -24,6 +26,7 @@ public class ModifReferentActivity extends AppCompatActivity {
 
     private Button bRetour;
     private Button bModifier;
+    private Button bSuppression;
 
     private Referent unRef;
     private ReferentDAO referentDAO;
@@ -45,6 +48,9 @@ public class ModifReferentActivity extends AppCompatActivity {
 
         bModifier = (Button) findViewById(R.id.bModifierRefModif);
         bModifier.setOnClickListener(modifierListener);
+
+        bSuppression = (Button) findViewById(R.id.bModifierRefSuppr);
+        bSuppression.setOnClickListener(suppressionListener);
 
         Bundle extra = getIntent().getExtras();
         if(extra.getInt("position")>= 0)
@@ -101,6 +107,36 @@ public class ModifReferentActivity extends AppCompatActivity {
             finish();
             Intent intent = new Intent(ModifReferentActivity.this, ListeReferentActivity.class);
             startActivityForResult(intent, 0);
+        }
+    };
+    private View.OnClickListener suppressionListener = new View.OnClickListener() {
+
+        public void onClick(View v) {
+            referentDAO = new ReferentDAO(getApplicationContext());
+            referentDAO.open();
+            unRef = referentDAO.readPosition(position);
+            AlertDialog.Builder builder = new AlertDialog.Builder(ModifReferentActivity.this);
+            builder.setTitle(R.string.app_name);
+            builder.setIcon(R.mipmap.ic_launcher);
+            builder.setMessage("Voulez-vous vraiment supprimer le référent?")
+                    .setCancelable(false)
+                    .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            referentDAO.delete(unRef);
+                            referentDAO.close();
+                            finish();
+                            Intent intent = new Intent(ModifReferentActivity.this, ListeReferentActivity.class);
+                            startActivityForResult(intent, 0);
+                        }
+                    })
+                    .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert = builder.create();
+            alert.show();
+
         }
     };
 }
