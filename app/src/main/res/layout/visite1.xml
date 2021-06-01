@@ -9,21 +9,20 @@
     <ScrollView
         android:layout_width="1159dp"
         android:layout_height="651dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
         android:background="@drawable/cell"
         android:padding="2dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.65999997">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TableLayout
-            android:layout_width="match_parent"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content">
 
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" >
+                android:layout_height="match_parent">
 
                 <TextView
                     android:id="@+id/textView"
@@ -32,10 +31,6 @@
                     android:text="                                                                                                                                   Compte Rendu Première Visite" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="22dp"
-                android:background="@android:color/darker_gray" />
             <TableRow
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content">
@@ -53,11 +48,6 @@
 
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray"  />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -74,11 +64,6 @@
 
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -94,11 +79,6 @@
                     android:layout_height="wrap_content" />
 
             </TableRow>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -124,11 +104,6 @@
                     android:layout_height="match_parent" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -144,11 +119,6 @@
                     android:layout_height="wrap_content" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -163,11 +133,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </TableRow>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -193,11 +158,6 @@
                     android:layout_height="match_parent" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -213,11 +173,6 @@
                     android:layout_height="wrap_content" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -232,11 +187,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </TableRow>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -263,11 +213,6 @@
                     android:layout_height="wrap_content" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -282,11 +227,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </TableRow>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -303,11 +243,6 @@
                     android:layout_height="wrap_content" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -322,11 +257,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </TableRow>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -343,11 +273,6 @@
                     android:layout_height="match_parent" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -362,11 +287,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent" />
             </TableRow>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -383,11 +303,6 @@
                     android:layout_height="match_parent" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -403,11 +318,6 @@
                     android:layout_height="match_parent" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -418,11 +328,6 @@
                     android:layout_height="wrap_content"
                     android:text="                                                                                                                      L'apprenti(e)centre en de formation: UFA" />
             </TableRow>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -439,11 +344,6 @@
                     android:layout_height="wrap_content" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -458,11 +358,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </TableRow>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -479,11 +374,6 @@
                     android:layout_height="wrap_content" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -498,11 +388,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </TableRow>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -519,11 +404,6 @@
                     android:layout_height="wrap_content" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -539,11 +419,6 @@
                     android:layout_height="wrap_content" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -554,11 +429,6 @@
                     android:layout_height="wrap_content"
                     android:text="                                                                                                                               L’apprenti en entreprise" />
             </TableRow>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -575,11 +445,6 @@
                     android:layout_height="wrap_content" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -594,11 +459,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" />
             </TableRow>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
 
             <TableRow
                 android:layout_width="match_parent"
@@ -615,11 +475,6 @@
                     android:layout_height="wrap_content" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -635,11 +490,6 @@
                     android:layout_height="wrap_content" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
                 android:layout_height="match_parent">
@@ -649,15 +499,9 @@
                     android:layout_height="15dp" />
             </TableRow>
 
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:background="@android:color/darker_gray" />
-
             <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_weight="match_parent">
+                android:layout_height="match_parent">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -670,6 +514,161 @@
                     android:layout_height="wrap_content" />
 
             </TableRow>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="22dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@android:color/darker_gray" />
         </TableLayout>
     </ScrollView>
 
