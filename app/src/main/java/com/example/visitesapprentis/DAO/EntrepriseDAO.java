@@ -6,9 +6,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+import com.example.visitesapprentis.Metier.Apprenti;
 import com.example.visitesapprentis.Metier.Entreprise;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class EntrepriseDAO extends DAO<Entreprise>{
@@ -66,6 +70,30 @@ public class EntrepriseDAO extends DAO<Entreprise>{
     @Override
     public void delete(Entreprise obj) {
         db.delete(TABLE_ENTREPRISE, COL_NOMENTREPRISE + "=" + obj.getNomEnt(), null);
+    }
+
+    public Entreprise readPosition(int position) {
+        Entreprise uneEnt;
+        int id;
+        String nom;
+        String adresse;
+        String ville;
+        String cp;
+        String tel;
+
+        Cursor curseur = db.query(TABLE_ENTREPRISE, null, null, null, null, null, null);
+
+        curseur.moveToFirst();
+        curseur.moveToPosition(position);
+        id = curseur.getInt(0);
+        nom = curseur.getString(1);
+        adresse = curseur.getString(2);
+        cp = curseur.getString(3);
+        ville = curseur.getString(4);
+        tel = curseur.getString(5);
+
+        uneEnt = new Entreprise(id, nom, adresse, cp, ville,tel);
+        return uneEnt;
     }
 
     public List<Entreprise> read(){

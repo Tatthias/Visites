@@ -22,6 +22,7 @@
         <activity android:name=".IHM.ListeApprentiActivity"></activity>
         <activity android:name=".IHM.ListeEntrepriseActivity"></activity>
         <activity android:name=".IHM.NewEntrepriseActivity"></activity>
+        <activity android:name=".IHM.UpdateEntrepriseActivity"></activity>
         <activity android:name=".IHM.ListeReferentActivity"></activity>
         <activity android:name=".IHM.NewReferentActivity"></activity>
     </application>
