@@ -45,9 +45,9 @@ public class NewEntrepriseActivity extends AppCompatActivity {
         bRetour.setOnClickListener(retourListener);
 
         editNomEnt = (EditText) findViewById(R.id.editNomNewEnt);
-        editRueEnt  = (EditText) findViewById(R.id.editCpNewEnt);
+        editRueEnt  = (EditText) findViewById(R.id.editRueNewEnt);
+        editCPEnt  = (EditText) findViewById(R.id.editCpNewEnt);
         editVilleEnt  = (EditText) findViewById(R.id.editVilleNewEnt);
-        editCPEnt  = (EditText) findViewById(R.id.editVilleNewEnt);
         editTelEnt  = (EditText) findViewById(R.id.editTelNewEnt);
 
         entrepriseDAO = new EntrepriseDAO(getApplicationContext());
@@ -55,11 +55,10 @@ public class NewEntrepriseActivity extends AppCompatActivity {
         for (Entreprise uneEnt : entrepriseDAO.read()) {
             idEnt = uneEnt.getIdEnt() + 1;
         }
-        Log.d("idNewEnt", String.valueOf(idEnt));
         entrepriseDAO.close();
     }
 
-    private View.OnClickListener retourListener = new View.OnClickListener() {
+    private final View.OnClickListener retourListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(NewEntrepriseActivity.this, ListeEntrepriseActivity.class);

@@ -27,7 +27,7 @@ public class ListeEntrepriseActivity extends AppCompatActivity {
     ListView listView;
 
     private EntrepriseDAO entrepriseDAO;
-    private String nomEnt;
+    private int idEnt;
 
 
     @Override
@@ -37,16 +37,12 @@ public class ListeEntrepriseActivity extends AppCompatActivity {
 
         listView = (ListView) findViewById(R.id.listeEntreprise);
 
-        List<Entreprise> lesEntreprises = new ArrayList<>();
-        EntrepriseDAO entrepriseDAO = new EntrepriseDAO(getApplicationContext());
+        entrepriseDAO = new EntrepriseDAO(getApplicationContext());
         entrepriseDAO.open();
-        lesEntreprises = entrepriseDAO.read();
+        for(Entreprise uneEnt : entrepriseDAO.read()){
+            idEnt = uneEnt.getIdEnt() + 1;
+        }
         entrepriseDAO.close();
-
-        ArrayAdapter<Entreprise> arrayAdapter = new ArrayAdapter<Entreprise>(this, android.R.layout.simple_list_item_1, lesEntreprises);
-
-        listView.setAdapter(arrayAdapter);
-
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
@@ -54,11 +50,20 @@ public class ListeEntrepriseActivity extends AppCompatActivity {
                 Intent intent = new Intent(ListeEntrepriseActivity.this, UpdateEntrepriseActivity.class);
 
                 intent.putExtra("position",position);
-                Log.d("idApp",String.valueOf(position));
+                Log.d("idEnt",String.valueOf(position));
                 startActivityForResult(intent,0);
             }
 
         });
+
+        List<Entreprise> lesEntreprises = new ArrayList<>();
+        EntrepriseDAO entrepriseDAO = new EntrepriseDAO(getApplicationContext());
+        entrepriseDAO.open();
+        lesEntreprises = entrepriseDAO.read();
+        entrepriseDAO.close();
+
+        ArrayAdapter<Entreprise> arrayAdapter = new ArrayAdapter<Entreprise>(this, android.R.layout.simple_list_item_1, lesEntreprises);
+        listView.setAdapter(arrayAdapter);
 
         bAjouter = (Button) findViewById(R.id.bAjouterEnt);
         bAjouter.setOnClickListener(ajouterListener);

@@ -81,7 +81,7 @@ public class ListeApprentiActivity extends AppCompatActivity {
 
     private View.OnClickListener ajouterListener = new View.OnClickListener() {
         public void onClick(View view) {
-            Intent intent = new Intent(ListeApprentiActivity.this, ApprentiActivity.class);
+            Intent intent = new Intent(ListeApprentiActivity.this, NewApprentiActivity.class);
             startActivityForResult(intent, 0);
         }
     };

@@ -16,7 +16,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
-public class ApprentiActivity extends AppCompatActivity {
+public class NewApprentiActivity extends AppCompatActivity {
 
     private Button bAjouter;
     private Button bRetour;
@@ -68,7 +68,7 @@ public class ApprentiActivity extends AppCompatActivity {
     private View.OnClickListener retourListener = new View.OnClickListener() {
         @Override
         public void onClick(View view) {
-            Intent intent = new Intent(ApprentiActivity.this, ListeApprentiActivity.class);
+            Intent intent = new Intent(NewApprentiActivity.this, ListeApprentiActivity.class);
             startActivityForResult(intent, 0);
         }
     };
@@ -96,7 +96,7 @@ public class ApprentiActivity extends AppCompatActivity {
             apprentiDAO.close();
 
             finish();
-            Intent intent = new Intent(ApprentiActivity.this, ListeApprentiActivity.class);
+            Intent intent = new Intent(NewApprentiActivity.this, ListeApprentiActivity.class);
             startActivityForResult(intent, 0);
         }
 

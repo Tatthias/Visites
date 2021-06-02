@@ -60,10 +60,10 @@ public class UpdateEntrepriseActivity extends AppCompatActivity {
         editNomEnt.setText(uneEnt.getNomEnt());
         editRueEnt  = (EditText) findViewById(R.id.editRueUpdateEnt);
         editRueEnt.setText(uneEnt.getAdresseEnt());
-        editVilleEnt  = (EditText) findViewById(R.id.editVilleUpdateEnt);
-        editVilleEnt.setText(uneEnt.getVilleEnt());
         editCPEnt  = (EditText) findViewById(R.id.editCpUpdateEnt);
         editCPEnt.setText(uneEnt.getCpEnt());
+        editVilleEnt  = (EditText) findViewById(R.id.editVilleUpdateEnt);
+        editVilleEnt.setText(uneEnt.getVilleEnt());
         editTelEnt  = (EditText) findViewById(R.id.editTelUpdateEnt);
         editTelEnt.setText(uneEnt.getTelEnt());
 
@@ -92,7 +92,7 @@ public class UpdateEntrepriseActivity extends AppCompatActivity {
 
             entrepriseDAO = new EntrepriseDAO(getApplicationContext());
 
-            uneEnt = new Entreprise(position+2, nom, addresse, ville, cp, tel);
+            uneEnt = new Entreprise(position+1, nom, addresse, cp, ville, tel);
 
             Log.d("unePosition", String.valueOf(position));
             entrepriseDAO.open();

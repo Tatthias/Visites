@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 
 import com.example.visitesapprentis.Metier.Apprenti;
 import com.example.visitesapprentis.Metier.Entreprise;
@@ -64,7 +65,8 @@ public class EntrepriseDAO extends DAO<Entreprise>{
         valeur.put(COL_VILLEENTREPRISE, obj.getVilleEnt());
         valeur.put(COL_TELENTREPRISE, obj.getTelEnt());
 
-        db.update(TABLE_ENTREPRISE, valeur, COL_IDENTREPRISE + "=" + obj.getIdEnt(), null);
+        Log.d("idEntDAO", String.valueOf(obj.getIdEnt()));
+        db.update(TABLE_ENTREPRISE, valeur, COL_IDENTREPRISE + "=" +obj.getIdEnt(), null);
     }
 
     @Override
@@ -107,8 +109,7 @@ public class EntrepriseDAO extends DAO<Entreprise>{
 
         Cursor curseur = db.query(TABLE_ENTREPRISE, null, null, null, null, null, null);
         curseur.moveToFirst();
-
-        for(int i = 0; i < curseur.getCount(); i++){
+        for (int i = 0; i < curseur.getCount(); i++){
             id = curseur.getInt(0);
             nom = curseur.getString(1);
             adresse = curseur.getString(2);
