@@ -71,7 +71,8 @@ public class EntrepriseDAO extends DAO<Entreprise>{
 
     @Override
     public void delete(Entreprise obj) {
-        db.delete(TABLE_ENTREPRISE, COL_NOMENTREPRISE + "=" + obj.getNomEnt(), null);
+        db.delete(TABLE_ENTREPRISE, COL_IDENTREPRISE + "=" + obj.getIdEnt(), null);
+        Log.d("DeleteId",String.valueOf(obj.getIdEnt()));
     }
 
     public Entreprise readPosition(int position) {
