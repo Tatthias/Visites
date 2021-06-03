@@ -82,6 +82,58 @@ public class MaitreAppDAO extends DAO<MaitreApprentissage>{
         db.delete(TABLE_MAITREAPP, COL_ID_MAITREAPP + "=" +obj.getIdMai(), null);
     }
 
+    public MaitreApprentissage readPosition(int position) {
+        Entreprise uneEnt;
+        MaitreApprentissage unMai;
+        int id;
+        String nom;
+        String prenom;
+        String adresse;
+        String cp;
+        String ville;
+        String tel;
+        String mail;
+        int idEntMai;
+
+        int idEnt;
+        String nomEnt;
+        String adresseEnt;
+        String cpEnt;
+        String villeEnt;
+        String telEnt;
+
+        Cursor curseur = db.query(TABLE_MAITREAPP, null, null, null, null, null, null);
+        curseur.moveToFirst();
+        curseur.moveToPosition(position);
+        id = curseur.getInt(0);
+        nom = curseur.getString(1);
+        prenom = curseur.getString(2);
+        adresse = curseur.getString(3);
+        cp = curseur.getString(4);
+        ville = curseur.getString(5);
+        tel = curseur.getString(6);
+        mail = curseur.getString(7);
+        idEntMai = curseur.getInt(8);
+
+        Cursor curseurEnt = db.query(TABLE_ENTREPRISE, null, null, null, COL_IDENTREPRISE+ ", " +COL_NOMENTREPRISE + ", " +
+                        COL_ADRESSEENTREPRISE + ", " + COL_CPENTREPRISE + ", " + COL_VILLEENTREPRISE + ", " + COL_TELENTREPRISE,
+                COL_IDENTREPRISE + "=" + idEntMai, null);
+        curseurEnt.moveToFirst();
+        idEnt =  curseurEnt.getInt(0);
+        nomEnt = curseurEnt.getString(1);
+        adresseEnt = curseurEnt.getString(2);
+        cpEnt = curseurEnt.getString(3);
+        villeEnt = curseurEnt.getString(4);
+        telEnt = curseurEnt.getString(5);
+
+        uneEnt = new Entreprise(idEnt, nomEnt, adresseEnt, cpEnt, villeEnt, telEnt);
+        unMai = new MaitreApprentissage(id, nom, prenom, adresse, cp, ville, tel, mail, uneEnt);
+
+        curseurEnt.close();
+        curseur.close();
+        return unMai;
+    }
+
     public List<MaitreApprentissage> read(){
         List<MaitreApprentissage> lesMaitres = new ArrayList<>();
         int idMai;

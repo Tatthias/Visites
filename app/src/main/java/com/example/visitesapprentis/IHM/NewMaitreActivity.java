@@ -68,7 +68,7 @@ public class NewMaitreActivity extends AppCompatActivity {
 
 
         List<Entreprise> lesEntreprises = new ArrayList<>();
-        EntrepriseDAO entrepriseDAO = new EntrepriseDAO(getApplicationContext());
+        entrepriseDAO = new EntrepriseDAO(getApplicationContext());
         entrepriseDAO.open();
         lesEntreprises = entrepriseDAO.read();
         entrepriseDAO.close();

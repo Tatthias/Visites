@@ -2,7 +2,9 @@ package com.example.visitesapprentis.IHM;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
@@ -41,6 +43,17 @@ public class ListeMaitreAppActivity extends AppCompatActivity {
             idMai = unMai.getIdMai() + 1;
         }
         maitreAppDAO.close();
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                Intent intent = new Intent(ListeMaitreAppActivity.this, UpdateMaitreActivity.class);
+                intent.putExtra("position",position);
+                Log.d("idMai",String.valueOf(position));
+                startActivityForResult(intent,0);
+            }
+
+        });
 
         List<MaitreApprentissage> lesMaitres = new ArrayList<>();
         MaitreAppDAO maitreAppDAO = new MaitreAppDAO(getApplicationContext());
