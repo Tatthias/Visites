@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.visitesapprentis.DAO.ApprentiDAO;
 import com.example.visitesapprentis.Metier.Apprenti;
+import com.example.visitesapprentis.Metier.Referent;
 import com.example.visitesapprentis.R;
 
 import java.text.ParseException;
@@ -105,12 +106,12 @@ public class ApprentiModifAcivity extends AppCompatActivity {
             String telApp = editTelApp.getText().toString();
             String classeApp = editClasseApp.getText().toString();
             String mailApp = editMailApp.getText().toString();
-
+            Referent unRef;
             Date laDate = unApp.getDateDebutApp();
-
+            unRef = new Referent(0,null,null,null,null);
             apprentiDAO = new ApprentiDAO(getApplicationContext());
 
-            unApp = new Apprenti(position+1, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp);
+            unApp = new Apprenti(position+1, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp,unRef);
 
             Log.d("unePosition", String.valueOf(position));
             apprentiDAO.open();

@@ -14,8 +14,9 @@ public class Apprenti {
     private Date dateDebutApp;
     private String classeApp;
     private String mailApp;
+    private Referent unReferent;
 
-    public Apprenti(int id, String nomApp, String prenomApp, String addresseApp, String villeApp, String cpApp, String telApp, Date dateDebutApp, String classeApp, String mailApp) {
+    public Apprenti(int id, String nomApp, String prenomApp, String addresseApp, String villeApp, String cpApp, String telApp, Date dateDebutApp, String classeApp, String mailApp, Referent unReferent) {
         this.idApp = id;
         this.nomApp = nomApp;
         this.prenomApp = prenomApp;
@@ -26,6 +27,7 @@ public class Apprenti {
         this.dateDebutApp = dateDebutApp;
         this.classeApp = classeApp;
         this.mailApp = mailApp;
+        this.unReferent = unReferent;
     }
 
     public int getIdApp() {
@@ -110,6 +112,14 @@ public class Apprenti {
 
     public void setMailApp(String mailApp) {
         this.mailApp = mailApp;
+    }
+
+    public Referent getUnReferent() {
+        return unReferent;
+    }
+
+    public void setUnReferent(Referent unReferent) {
+        this.unReferent = unReferent;
     }
 
     public String toString(){
