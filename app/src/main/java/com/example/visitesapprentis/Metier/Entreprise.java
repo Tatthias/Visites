@@ -17,6 +17,7 @@ public class Entreprise {
         this.telEnt = telEnt;
     }
 
+
     public int getIdEnt() {
         return idEnt;
     }

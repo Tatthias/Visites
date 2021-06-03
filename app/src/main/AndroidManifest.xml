@@ -25,6 +25,7 @@
         <activity android:name=".IHM.UpdateEntrepriseActivity"></activity>
         <activity android:name=".IHM.ListeReferentActivity"></activity>
         <activity android:name=".IHM.NewReferentActivity"></activity>
+        <activity android:name=".IHM.ListeMaitreAppActivity"></activity>
     </application>
 
 </manifest>

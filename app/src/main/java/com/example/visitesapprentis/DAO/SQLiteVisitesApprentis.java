@@ -33,6 +33,12 @@ public class SQLiteVisitesApprentis extends SQLiteOpenHelper {
             db.execSQL("CREATE TABLE Referent (idRef INTEGER PRIMARY KEY AUTOINCREMENT, nomRef VARCHAR(100),  prenomRef VARCHAR(100), addresseRef VARCHAR(100),  telRef VARCHAR(10))");
             db.execSQL("INSERT INTO Referent VALUES (1, 'Pierre', 'Paul', 'loudun', '1111111111')");
             db.execSQL("INSERT INTO Referent VALUES (2, 'Jack', 'Daniels', 'loudun', '1111111111')");
+
+            db.execSQL("DROP TABLE IF EXISTS MaitreApprentissage");
+            db.execSQL("CREATE TABLE MaitreApprentissage (idMai INTEGER PRIMARY KEY AUTOINCREMENT, nomMai VARCHAR(100),  prenomMai VARCHAR(100), addresseMai VARCHAR(100)," +
+                    " cpMai VARCHAR(100), villeMai VARCHAR(100), telMail VARCHAR(10), mailApp VARCHAR(100), idEnt INTEGER, FOREIGN KEY (idEnt) REFERENCES Entreprise (idEnt))");
+            db.execSQL("INSERT INTO MaitreApprentissage VALUES (1, 'Benzema', 'Karim', '2 rue du but', '12345', 'Madrid', '1111111111', 'mail@cmail.com', 1)");
+            db.execSQL("INSERT INTO MaitreApprentissage VALUES (2, 'Deschamp', 'Didier', '2 rue du Seine', '95000', 'Paris', '2222222222', 'mailDD@cmail.com', 2)");
         } catch (Exception e) {
             e.printStackTrace();
         }

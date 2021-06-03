@@ -14,7 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Button bApprenti;
     private Button bEntreprise;
     private Button bReferent;
-
+    private Button bMaitre;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +30,9 @@ public class MainActivity extends AppCompatActivity {
 
         bReferent = (Button) findViewById(R.id.buttonReferent);
         bReferent.setOnClickListener(referentListener);
+
+        bMaitre = (Button) findViewById(R.id.buttonMaitreApp);
+        bMaitre.setOnClickListener(maitreListener);
     }
 
     private View.OnClickListener apprentiListener = new View.OnClickListener() {
@@ -51,6 +54,14 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public void onClick(View view) {
             Intent intent = new Intent(MainActivity.this, ListeReferentActivity.class);
+            startActivityForResult(intent, 0);
+        }
+    };
+
+    private View.OnClickListener maitreListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Intent intent = new Intent(MainActivity.this, ListeMaitreAppActivity.class);
             startActivityForResult(intent, 0);
         }
     };

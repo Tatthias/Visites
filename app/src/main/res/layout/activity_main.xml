@@ -35,13 +35,13 @@
             app:layout_constraintTop_toBottomOf="@+id/buttonApprenti" />
 
         <Button
-            android:id="@+id/buttonMaitreStage"
+            android:id="@+id/buttonMaitreApp"
             android:layout_width="fill_parent"
             android:layout_height="100dp"
             android:layout_marginLeft="100dp"
             android:layout_marginTop="50dp"
             android:layout_marginRight="100dp"
-            android:text="Gestion des maîtres de stage"
+            android:text="Gestion des maîtres d'apptrentissage"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/buttonEntreprise" />
 
@@ -54,6 +54,6 @@
             android:layout_marginRight="100dp"
             android:text="Gestion des référents"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/buttonMaitreStage" />
+            app:layout_constraintTop_toBottomOf="@+id/buttonMaitreApp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

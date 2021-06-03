@@ -96,8 +96,8 @@ public class ApprentiDAO extends DAO<Apprenti> {
     //modification de l'apprenti
 
     public  void delete (Apprenti obj){
-        db.delete(TABLE_APPRENTI, COL_ID_APPRENTI + "=" +obj.getIdApp(),null);
         Log.d("DeleteId",String.valueOf(obj.getIdApp()));
+        db.delete(TABLE_APPRENTI, COL_ID_APPRENTI + "=" +obj.getIdApp(),null);
     }
     //suppression de l'apprenti en fonction de son numero
 
