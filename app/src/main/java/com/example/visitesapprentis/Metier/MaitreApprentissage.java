@@ -13,6 +13,7 @@ public class MaitreApprentissage {
     private Entreprise uneEnt;
 
     public MaitreApprentissage(int idMai, String nomMai, String prenomMai, String addresseMai, String cpMai, String villeMai, String telMai, String mailMai, Entreprise uneEnt) {
+        this.idMai = idMai;
         this.nomMai = nomMai;
         this.prenomMai = prenomMai;
         this.addresseMai = addresseMai;
@@ -97,6 +98,6 @@ public class MaitreApprentissage {
 
     @Override
     public String toString() {
-        return nomMai + " " + prenomMai + " Entreprise : " + uneEnt.toString();
+        return nomMai + " " + prenomMai;
     }
 }

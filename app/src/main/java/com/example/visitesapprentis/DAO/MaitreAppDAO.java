@@ -55,6 +55,7 @@ public class MaitreAppDAO extends DAO<MaitreApprentissage>{
         valeur.put(COL_MAIL_MAITREAPP, obj.getMailMai());
         valeur.put(COL_ID_ENTREPRISE_MAITREAPP, obj.getUneEnt().getIdEnt());
 
+        Log.d("idDao", String.valueOf(obj.getIdMai()));
         db.insert(TABLE_MAITREAPP, null, valeur);
     }
 
@@ -91,7 +92,7 @@ public class MaitreAppDAO extends DAO<MaitreApprentissage>{
         String cp;
         String tel;
         String mail;
-        int maiEnt;
+        int idEntMai;
 
         int idEnt;
         String nomEnt;
@@ -108,27 +109,27 @@ public class MaitreAppDAO extends DAO<MaitreApprentissage>{
             nom = curseur.getString(1);
             prenom = curseur.getString(2);
             adresse = curseur.getString(3);
-            ville = curseur.getString(4);
-            cp = curseur.getString(5);
+            cp = curseur.getString(4);
+            ville = curseur.getString(5);
             tel = curseur.getString(6);
             mail = curseur.getString(7);
-            maiEnt = curseur.getInt(8);
+            idEntMai = curseur.getInt(8);
+
             Cursor curseurEnt = db.query(TABLE_ENTREPRISE, null, null, null, COL_IDENTREPRISE+ ", " +COL_NOMENTREPRISE + ", " +
                     COL_ADRESSEENTREPRISE + ", " + COL_CPENTREPRISE + ", " + COL_VILLEENTREPRISE + ", " + COL_TELENTREPRISE,
-                    COL_IDENTREPRISE + "=" + maiEnt, null);
+                    COL_IDENTREPRISE + "=" + idEntMai, null);
             curseurEnt.moveToFirst();
-            for (int y = 0; y < curseurEnt.getCount(); y++){
-                idEnt =  curseurEnt.getInt(0);
-                nomEnt = curseurEnt.getString(1);
-                adresseEnt = curseurEnt.getString(2);
-                cpEnt = curseurEnt.getString(3);
-                villeEnt = curseurEnt.getString(4);
-                telEnt = curseurEnt.getString(5);
+            idEnt =  curseurEnt.getInt(0);
+            nomEnt = curseurEnt.getString(1);
+            adresseEnt = curseurEnt.getString(2);
+            cpEnt = curseurEnt.getString(3);
+            villeEnt = curseurEnt.getString(4);
+            telEnt = curseurEnt.getString(5);
 
-                Entreprise uneEnt = new Entreprise(idEnt, nomEnt, adresseEnt, cpEnt, villeEnt, telEnt);
-                MaitreApprentissage unMai = new MaitreApprentissage(idMai, nom, prenom, adresse, cp, ville, tel, mail, uneEnt);
-                lesMaitres.add(unMai);
-            }
+            Entreprise uneEnt = new Entreprise(idEnt, nomEnt, adresseEnt, cpEnt, villeEnt, telEnt);
+            MaitreApprentissage unMai = new MaitreApprentissage(idMai, nom, prenom, adresse, cp, ville, tel, mail, uneEnt);
+            lesMaitres.add(unMai);
+
             curseurEnt.close();
             curseur.moveToNext();
         }

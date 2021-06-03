@@ -61,14 +61,14 @@ public class NewMaitreActivity extends AppCompatActivity {
 
         maitreAppDAO = new MaitreAppDAO(getApplicationContext());
         maitreAppDAO.open();
-        for (MaitreApprentissage laMai : maitreAppDAO.read()) {
-            idMai = laMai.getIdMai() + 1;
+        for (MaitreApprentissage unMai : maitreAppDAO.read()) {
+            idMai = unMai.getIdMai() + 1;
         }
-        Log.d("idMai", String.valueOf(idMai));
         maitreAppDAO.close();
 
+
         List<Entreprise> lesEntreprises = new ArrayList<>();
-        entrepriseDAO = new EntrepriseDAO(getApplicationContext());
+        EntrepriseDAO entrepriseDAO = new EntrepriseDAO(getApplicationContext());
         entrepriseDAO.open();
         lesEntreprises = entrepriseDAO.read();
         entrepriseDAO.close();
@@ -76,9 +76,15 @@ public class NewMaitreActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                view.setBackgroundColor(Color.parseColor("#93D152"));
                 uneEnt = (Entreprise) listView.getItemAtPosition(position);
                 Log.d("Ent selectionné", String.valueOf(uneEnt));
+                for(int i = 0; i < listView.getChildCount(); i++){
+                    if(position == i){
+                        listView.getChildAt(i).setBackgroundColor(Color.parseColor("#93D152"));
+                    }else{
+                        listView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+                    }
+                }
             }
         });
 
