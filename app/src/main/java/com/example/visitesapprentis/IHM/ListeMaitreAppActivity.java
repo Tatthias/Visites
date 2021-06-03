@@ -51,6 +51,9 @@ public class ListeMaitreAppActivity extends AppCompatActivity {
         ArrayAdapter<MaitreApprentissage> arrayAdapter = new ArrayAdapter<MaitreApprentissage>(this, android.R.layout.simple_list_item_1, lesMaitres);
         listView.setAdapter(arrayAdapter);
 
+        bAjouter = (Button) findViewById(R.id.bAjouterMaiApp);
+        bAjouter.setOnClickListener(ajouterListener);
+
         bRetour = (Button) findViewById(R.id.bRetourMaiApp);
         bRetour.setOnClickListener(retourListener);
     }
@@ -58,6 +61,13 @@ public class ListeMaitreAppActivity extends AppCompatActivity {
     private View.OnClickListener retourListener = new View.OnClickListener() {
         public void onClick(View view) {
             Intent intent = new Intent( ListeMaitreAppActivity.this, MainActivity.class);
+            startActivityForResult(intent, 0);
+        }
+    };
+
+    private View.OnClickListener ajouterListener = new View.OnClickListener() {
+        public void onClick(View view) {
+            Intent intent = new Intent(ListeMaitreAppActivity.this, NewMaitreActivity.class);
             startActivityForResult(intent, 0);
         }
     };
