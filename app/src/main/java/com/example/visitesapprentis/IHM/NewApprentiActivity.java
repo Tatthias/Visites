@@ -1,20 +1,31 @@
 package com.example.visitesapprentis.IHM;
 
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.visitesapprentis.DAO.ApprentiDAO;
+import com.example.visitesapprentis.DAO.EntrepriseDAO;
+import com.example.visitesapprentis.DAO.ReferentDAO;
 import com.example.visitesapprentis.Metier.Apprenti;
+import com.example.visitesapprentis.Metier.Entreprise;
+import com.example.visitesapprentis.Metier.Referent;
 import com.example.visitesapprentis.R;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class NewApprentiActivity extends AppCompatActivity {
 
@@ -23,6 +34,9 @@ public class NewApprentiActivity extends AppCompatActivity {
 
     private Apprenti unApp;
     private ApprentiDAO apprentiDAO;
+    private Referent unRef;
+
+    ListView listView;
 
     private EditText editNomApp;
     private EditText editPrenomApp;
@@ -48,6 +62,8 @@ public class NewApprentiActivity extends AppCompatActivity {
         bRetour = (Button) findViewById(R.id.bRetourAppModif);
         bRetour.setOnClickListener(retourListener);
 
+        listView = (ListView) findViewById(R.id.listeAppRef);
+
         editNomApp = (EditText) findViewById(R.id.editNomApp);
         editPrenomApp = (EditText) findViewById(R.id.editPrenomApp);
         editRueApp  = (EditText) findViewById(R.id.editRueApp);
@@ -63,6 +79,30 @@ public class NewApprentiActivity extends AppCompatActivity {
             idApp = unApp.getIdApp() + 1;
         }
         apprentiDAO.close();
+
+        List<Referent> lesReferents = new ArrayList<>();
+        ReferentDAO referentDAO = new ReferentDAO(getApplicationContext());
+        referentDAO.open();
+        lesReferents = referentDAO.read();
+        referentDAO.close();
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                unRef = (Referent) listView.getItemAtPosition(position);
+                Log.d("Référent selectionné", String.valueOf(unRef));
+                for(int i = 0; i < listView.getChildCount(); i++){
+                    if(position == i){
+                        listView.getChildAt(i).setBackgroundColor(Color.parseColor("#93D152"));
+                    }else{
+                        listView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
+                    }
+                }
+            }
+        });
+        ArrayAdapter<Referent> arrayAdapter = new ArrayAdapter<Referent>(this, android.R.layout.simple_list_item_1, lesReferents);
+        listView.setAdapter(arrayAdapter);
     }
 
     private View.OnClickListener retourListener = new View.OnClickListener() {
@@ -89,7 +129,7 @@ public class NewApprentiActivity extends AppCompatActivity {
 
             Date laDate = new Date(31/05/2021);
 
-            unApp = new Apprenti(idApp, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp);
+            unApp = new Apprenti(idApp, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp,unRef);
 
             apprentiDAO.open();
             apprentiDAO.insert(unApp);

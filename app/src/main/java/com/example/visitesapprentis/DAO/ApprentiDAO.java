@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.Locale;
 
 import com.example.visitesapprentis.Metier.Apprenti;
+import com.example.visitesapprentis.Metier.Referent;
 
 public class ApprentiDAO extends DAO<Apprenti> {
 
@@ -35,6 +36,15 @@ public class ApprentiDAO extends DAO<Apprenti> {
     private static final String COL_DATEDEBUTAPPRENTI = "dateDebutApp";
     private static final String COL_CLASSEAPPRENTI = "classeApp";
     private static final String COL_MAILAPPRENTI = "mailApp";
+    private static final String COL_REFAPPRENTI = "idRefApp";
+
+    private static final String TABLE_REFERENT = "REFERENT";
+    private static final String COL_ID_REF = "idRef";
+    private static final String COL_NOM_REF = "nomRef";
+    private static final String COL_PRENOM_REF = "prenomRef";
+    private static final String COL_ADDRESSE_REF = "addresseRef";
+    private static final String COL_TEL_REF = "telRef";
+
 
     private String getDateTime() {
 
@@ -72,6 +82,7 @@ public class ApprentiDAO extends DAO<Apprenti> {
         valeur.put(COL_DATEDEBUTAPPRENTI,getDateTime());
         valeur.put(COL_CLASSEAPPRENTI, app.getClasseApp());
         valeur.put(COL_MAILAPPRENTI, app.getMailApp());
+        valeur.put(COL_REFAPPRENTI, app.getUnReferent().getIdRef());
 
         db.insert(TABLE_APPRENTI, null, valeur);
     }
@@ -89,6 +100,8 @@ public class ApprentiDAO extends DAO<Apprenti> {
         valeur.put(COL_DATEDEBUTAPPRENTI, String.valueOf(app.getDateDebutApp()));
         valeur.put(COL_CLASSEAPPRENTI, app.getClasseApp());
         valeur.put(COL_MAILAPPRENTI, app.getMailApp());
+        valeur.put(COL_REFAPPRENTI, app.getUnReferent().getIdRef());
+
 
         Log.d("idModif", String.valueOf(app.getIdApp()));
         db.update(TABLE_APPRENTI, valeur, COL_ID_APPRENTI + "=" +app.getIdApp(), null);
@@ -114,7 +127,15 @@ public class ApprentiDAO extends DAO<Apprenti> {
         String mail;
         int idApp;
         Apprenti unApp;
-        unApp = new Apprenti(0,null,null,null,null,null,null,null,null,null);
+        int idRefApp;
+
+        String nomRef;
+        String prenomRef;
+        String adresseRef;
+        String telRef;
+        int idRef;
+
+        unApp = new Apprenti(0,null,null,null,null,null,null,null,null,null,null);
 
 
         Cursor curseurQuery = db.query(nomTable, null, COL_ID_APPRENTI+"="+id, null, null, null, null);
@@ -132,13 +153,29 @@ public class ApprentiDAO extends DAO<Apprenti> {
             date = curseurQuery.getString(7);
             classe = curseurQuery.getString(8);
             mail = curseurQuery.getString(9);
+            idRefApp = curseurQuery.getInt(10);
+
+            Cursor curseurRef = db.query(TABLE_REFERENT, null, null, null, COL_ID_REF+ ", " +COL_NOM_REF + ", " +
+                            COL_PRENOM_REF + ", " + COL_ADDRESSE_REF + ", " + COL_TEL_REF ,
+                    COL_ID_REF + "=" + idRefApp, null);
+            curseurRef.moveToFirst();
+            idRef =  curseurRef.getInt(0);
+            nomRef = curseurRef.getString(1);
+            prenomRef = curseurRef.getString(2);
+            adresseRef = curseurRef.getString(3);
+            telRef = curseurRef.getString(4);
+
             Date uneDate = null;
             try {
                 uneDate = new SimpleDateFormat("yyyy/MM/dd").parse(date);
             } catch (ParseException e) {
                 e.printStackTrace();
             }
-            unApp = new Apprenti(idApp, nom, prenom, adresse, ville, cp, tel, uneDate, classe, mail);
+
+            Referent unRef = new Referent(idRef,nomRef,prenomRef,adresseRef,telRef);
+            unApp = new Apprenti(idApp, nom, prenom, adresse, ville, cp, tel, uneDate, classe, mail,unRef);
+
+            curseurRef.close();
         }
         curseurQuery.close();
         return unApp;
@@ -157,6 +194,13 @@ public class ApprentiDAO extends DAO<Apprenti> {
         String classe;
         String mail;
         int idApp;
+        int idRefApp;
+
+        String nomRef;
+        String prenomRef;
+        String adresseRef;
+        String telRef;
+        int idRef;
 
         Cursor curseur = db.query(TABLE_APPRENTI, null, null, null, null, null, null);
 
@@ -172,6 +216,7 @@ public class ApprentiDAO extends DAO<Apprenti> {
         date = curseur.getString(7);
         classe = curseur.getString(8);
         mail = curseur.getString(9);
+        idRefApp = curseur.getInt(10);
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
         Date uneDate = null;
         try {
@@ -179,8 +224,18 @@ public class ApprentiDAO extends DAO<Apprenti> {
         } catch (ParseException e) {
             e.printStackTrace();
         }
+        Cursor curseurRef = db.query(TABLE_REFERENT, null, null, null, COL_ID_REF+ ", " +COL_NOM_REF + ", " +
+                        COL_PRENOM_REF + ", " + COL_ADDRESSE_REF + ", " + COL_TEL_REF ,
+                COL_ID_REF + "=" + idRefApp, null);
+        curseurRef.moveToFirst();
+        idRef =  curseurRef.getInt(0);
+        nomRef = curseurRef.getString(1);
+        prenomRef = curseurRef.getString(2);
+        adresseRef = curseurRef.getString(3);
+        telRef = curseurRef.getString(4);
 
-        unApp = new Apprenti(idApp, nom, prenom, adresse, ville, cp, tel, uneDate, classe, mail);
+        Referent unRef = new Referent(idRef,nomRef,prenomRef,adresseRef,telRef);
+        unApp = new Apprenti(idApp, nom, prenom, adresse, ville, cp, tel, uneDate, classe, mail,unRef);
         return unApp;
     }
 
@@ -196,7 +251,15 @@ public class ApprentiDAO extends DAO<Apprenti> {
         String classe;
         String mail;
         int idApp;
-        boolean verif;
+        int idRefApp;
+        Apprenti unApp;
+
+        String nomRef;
+        String prenomRef;
+        String adresseRef;
+        String telRef;
+        int idRef;
+
 
         Cursor curseur = db.query(TABLE_APPRENTI, null, null, null, null, null, null);
         curseur.moveToFirst();
@@ -211,6 +274,7 @@ public class ApprentiDAO extends DAO<Apprenti> {
             date = curseur.getString(7);
             classe = curseur.getString(8);
             mail = curseur.getString(9);
+            idRefApp = curseur.getInt(10);
             SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy");
             Date uneDate = null;
             try {
@@ -219,8 +283,19 @@ public class ApprentiDAO extends DAO<Apprenti> {
                 e.printStackTrace();
             }
 
-            Apprenti unApp = new Apprenti(idApp, nom, prenom, adresse, ville, cp, tel, uneDate, classe, mail);
-            desApprentis.add(unApp);
+            Cursor curseurRef = db.query(TABLE_REFERENT, null, null, null, COL_ID_REF+ ", " +COL_NOM_REF + ", " +
+                            COL_PRENOM_REF + ", " + COL_ADDRESSE_REF + ", " + COL_TEL_REF ,
+                    COL_ID_REF + "=" + idRefApp, null);
+            curseurRef.moveToFirst();
+            idRef =  curseurRef.getInt(0);
+            nomRef = curseurRef.getString(1);
+            prenomRef = curseurRef.getString(2);
+            adresseRef = curseurRef.getString(3);
+            telRef = curseurRef.getString(4);
+
+            Referent unRef = new Referent(idRef,nomRef,prenomRef,adresseRef,telRef);
+            unApp = new Apprenti(idApp, nom, prenom, adresse, ville, cp, tel, uneDate, classe, mail,unRef);
+            curseurRef.close();
             curseur.moveToNext();
         }
         curseur.close();
