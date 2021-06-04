@@ -14,6 +14,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.visitesapprentis.DAO.ApprentiDAO;
 import com.example.visitesapprentis.Metier.Apprenti;
+import com.example.visitesapprentis.Metier.MaitreApprentissage;
 import com.example.visitesapprentis.Metier.Referent;
 import com.example.visitesapprentis.R;
 
@@ -109,9 +110,10 @@ public class ApprentiModifAcivity extends AppCompatActivity {
             Referent unRef;
             Date laDate = unApp.getDateDebutApp();
             unRef = new Referent(0,null,null,null,null);
+            MaitreApprentissage unMai = new MaitreApprentissage(3, null, null, null, null, null, null,null, null);
             apprentiDAO = new ApprentiDAO(getApplicationContext());
 
-            unApp = new Apprenti(position+1, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp,unRef);
+            unApp = new Apprenti(position+1, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp, unRef, unMai);
 
             Log.d("unePosition", String.valueOf(position));
             apprentiDAO.open();

@@ -18,6 +18,7 @@ import com.example.visitesapprentis.DAO.EntrepriseDAO;
 import com.example.visitesapprentis.DAO.ReferentDAO;
 import com.example.visitesapprentis.Metier.Apprenti;
 import com.example.visitesapprentis.Metier.Entreprise;
+import com.example.visitesapprentis.Metier.MaitreApprentissage;
 import com.example.visitesapprentis.Metier.Referent;
 import com.example.visitesapprentis.R;
 
@@ -35,6 +36,7 @@ public class NewApprentiActivity extends AppCompatActivity {
     private Apprenti unApp;
     private ApprentiDAO apprentiDAO;
     private Referent unRef;
+    private MaitreApprentissage unMai;
 
     ListView listView;
 
@@ -101,6 +103,8 @@ public class NewApprentiActivity extends AppCompatActivity {
                 }
             }
         });
+        unMai = new MaitreApprentissage(4, null, null, null, null, null, null, null, null);
+
         ArrayAdapter<Referent> arrayAdapter = new ArrayAdapter<Referent>(this, android.R.layout.simple_list_item_1, lesReferents);
         listView.setAdapter(arrayAdapter);
     }
@@ -129,7 +133,7 @@ public class NewApprentiActivity extends AppCompatActivity {
 
             Date laDate = new Date(31/05/2021);
 
-            unApp = new Apprenti(idApp, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp,unRef);
+            unApp = new Apprenti(idApp, nomApp, prenomApp, addresseApp, villeApp, cpApp, telApp, laDate, classeApp, mailApp, unRef, unMai);
 
             apprentiDAO.open();
             apprentiDAO.insert(unApp);

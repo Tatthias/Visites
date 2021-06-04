@@ -49,7 +49,6 @@ public class ListeMaitreAppActivity extends AppCompatActivity {
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
                 Intent intent = new Intent(ListeMaitreAppActivity.this, UpdateMaitreActivity.class);
                 intent.putExtra("position",position);
-                Log.d("idMai",String.valueOf(position));
                 startActivityForResult(intent,0);
             }
 

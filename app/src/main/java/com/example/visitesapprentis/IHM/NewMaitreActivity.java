@@ -73,22 +73,7 @@ public class NewMaitreActivity extends AppCompatActivity {
         lesEntreprises = entrepriseDAO.read();
         entrepriseDAO.close();
 
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                uneEnt = (Entreprise) listView.getItemAtPosition(position);
-                Log.d("Ent selectionné", String.valueOf(uneEnt));
-                for(int i = 0; i < listView.getChildCount(); i++){
-                    if(position == i){
-                        listView.getChildAt(i).setBackgroundColor(Color.parseColor("#93D152"));
-                    }else{
-                        listView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-                    }
-                }
-            }
-        });
-
-        ArrayAdapter<Entreprise> arrayAdapter = new ArrayAdapter<Entreprise>(this, android.R.layout.simple_list_item_1, lesEntreprises);
+        ArrayAdapter<Entreprise> arrayAdapter = new ArrayAdapter<Entreprise>(this, android.R.layout.simple_list_item_single_choice, lesEntreprises);
         listView.setAdapter(arrayAdapter);
 
         bAjouter = (Button) findViewById(R.id.bAjouterNewMai);

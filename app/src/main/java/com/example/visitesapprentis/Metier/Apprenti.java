@@ -15,8 +15,10 @@ public class Apprenti {
     private String classeApp;
     private String mailApp;
     private Referent unReferent;
+    private MaitreApprentissage unMaître;
 
-    public Apprenti(int id, String nomApp, String prenomApp, String addresseApp, String villeApp, String cpApp, String telApp, Date dateDebutApp, String classeApp, String mailApp, Referent unReferent) {
+    public Apprenti(int id, String nomApp, String prenomApp, String addresseApp, String villeApp, String cpApp,
+                    String telApp, Date dateDebutApp, String classeApp, String mailApp, Referent unReferent, MaitreApprentissage unMaître) {
         this.idApp = id;
         this.nomApp = nomApp;
         this.prenomApp = prenomApp;
@@ -28,6 +30,7 @@ public class Apprenti {
         this.classeApp = classeApp;
         this.mailApp = mailApp;
         this.unReferent = unReferent;
+        this.unMaître = unMaître;
     }
 
     public int getIdApp() {
@@ -122,8 +125,16 @@ public class Apprenti {
         this.unReferent = unReferent;
     }
 
+    public MaitreApprentissage getUnMaître() {
+        return unMaître;
+    }
+
+    public void setUnMaître(MaitreApprentissage unMaître) {
+        this.unMaître = unMaître;
+    }
+
     public String toString(){
-        return nomApp + " "+ prenomApp;
+        return nomApp + " " + prenomApp + " unRef: " + unReferent + " unMai: " + unMaître;
     }
 
 }

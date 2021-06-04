@@ -46,9 +46,7 @@ public class ListeEntrepriseActivity extends AppCompatActivity {
         listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-
                 Intent intent = new Intent(ListeEntrepriseActivity.this, UpdateEntrepriseActivity.class);
-
                 intent.putExtra("position",position);
                 Log.d("idEnt",String.valueOf(position));
                 startActivityForResult(intent,0);
