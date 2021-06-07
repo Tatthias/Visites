@@ -98,6 +98,6 @@ public class MaitreApprentissage {
 
     @Override
     public String toString() {
-        return nomMai + " " + prenomMai;
+        return nomMai + " " + prenomMai + " " + uneEnt;
     }
 }

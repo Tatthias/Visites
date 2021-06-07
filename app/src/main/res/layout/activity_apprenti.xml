@@ -28,21 +28,42 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/constraintLayout5"
-        android:layout_width="1280dp"
-        android:layout_height="459dp"
+        android:layout_width="match_parent"
+        android:layout_height="485dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <ListView
+            android:id="@+id/listeRefAppNew"
+            android:layout_width="300dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="260dp"
+            android:layout_marginTop="20dp"
+            android:choiceMode="singleChoice"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editVilleApp" />
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="596dp"
+            android:layout_marginTop="42dp"
+            android:text="Selectionner un maître :"
+            android:textSize="16sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/classeApp" />
 
         <TextView
             android:id="@+id/textView4"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="588dp"
-            android:layout_marginTop="36dp"
-            android:text="Selectionner un référent:"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="42dp"
+            android:text="Selectionner un référent :"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/classeApp" />
+            app:layout_constraintTop_toBottomOf="@+id/villeApp" />
 
         <EditText
             android:id="@+id/editNomApp"
@@ -125,7 +146,7 @@
             android:id="@+id/editMailApp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="808dp"
+            android:layout_marginStart="804dp"
             android:layout_marginTop="24dp"
             android:ems="10"
             android:inputType="textPersonName"
@@ -214,26 +235,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="596dp"
-            android:layout_marginTop="36dp"
+            android:layout_marginTop="48dp"
             android:text="Mail :"
             android:textSize="16sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/dateDebutApp" />
 
         <ListView
-            android:id="@+id/listeAppRef"
-            android:layout_width="471dp"
-            android:layout_height="184dp"
+            android:id="@+id/listeMaiAppNew"
+            android:layout_width="300dp"
+            android:layout_height="170dp"
+            android:layout_marginStart="804dp"
+            android:layout_marginTop="20dp"
             android:choiceMode="singleChoice"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/editVilleApp" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="1271dp"
-        android:layout_height="177dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_width="match_parent"
+        android:layout_height="162dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout5">
 

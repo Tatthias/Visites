@@ -14,10 +14,9 @@ import android.widget.ListView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.visitesapprentis.DAO.ApprentiDAO;
-import com.example.visitesapprentis.DAO.EntrepriseDAO;
+import com.example.visitesapprentis.DAO.MaitreAppDAO;
 import com.example.visitesapprentis.DAO.ReferentDAO;
 import com.example.visitesapprentis.Metier.Apprenti;
-import com.example.visitesapprentis.Metier.Entreprise;
 import com.example.visitesapprentis.Metier.MaitreApprentissage;
 import com.example.visitesapprentis.Metier.Referent;
 import com.example.visitesapprentis.R;
@@ -35,10 +34,13 @@ public class NewApprentiActivity extends AppCompatActivity {
 
     private Apprenti unApp;
     private ApprentiDAO apprentiDAO;
-    private Referent unRef;
+    private MaitreAppDAO maitreAppDAO;
     private MaitreApprentissage unMai;
+    private ReferentDAO referentDAO;
+    private Referent unRef;
 
-    ListView listView;
+    ListView listViewRef;
+    ListView listViewMai;
 
     private EditText editNomApp;
     private EditText editPrenomApp;
@@ -64,7 +66,8 @@ public class NewApprentiActivity extends AppCompatActivity {
         bRetour = (Button) findViewById(R.id.bRetourAppModif);
         bRetour.setOnClickListener(retourListener);
 
-        listView = (ListView) findViewById(R.id.listeAppRef);
+        listViewRef = (ListView) findViewById(R.id.listeRefAppNew);
+        listViewMai = (ListView) findViewById(R.id.listeMaiAppNew);
 
         editNomApp = (EditText) findViewById(R.id.editNomApp);
         editPrenomApp = (EditText) findViewById(R.id.editPrenomApp);
@@ -83,30 +86,36 @@ public class NewApprentiActivity extends AppCompatActivity {
         apprentiDAO.close();
 
         List<Referent> lesReferents = new ArrayList<>();
-        ReferentDAO referentDAO = new ReferentDAO(getApplicationContext());
+        referentDAO = new ReferentDAO(getApplicationContext());
         referentDAO.open();
         lesReferents = referentDAO.read();
         referentDAO.close();
 
-
-        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+        listViewRef.setOnItemClickListener(new AdapterView.OnItemClickListener(){
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
-                unRef = (Referent) listView.getItemAtPosition(position);
-                Log.d("Référent selectionné", String.valueOf(unRef));
-                for(int i = 0; i < listView.getChildCount(); i++){
-                    if(position == i){
-                        listView.getChildAt(i).setBackgroundColor(Color.parseColor("#93D152"));
-                    }else{
-                        listView.getChildAt(i).setBackgroundColor(Color.TRANSPARENT);
-                    }
-                }
+                unRef = (Referent) listViewRef.getItemAtPosition(position);
             }
         });
-        unMai = new MaitreApprentissage(4, null, null, null, null, null, null, null, null);
 
-        ArrayAdapter<Referent> arrayAdapter = new ArrayAdapter<Referent>(this, android.R.layout.simple_list_item_1, lesReferents);
-        listView.setAdapter(arrayAdapter);
+        ArrayAdapter<Referent> arrayAdapterRef = new ArrayAdapter<Referent>(this, android.R.layout.simple_list_item_single_choice, lesReferents);
+        listViewRef.setAdapter(arrayAdapterRef);
+
+        List<MaitreApprentissage> lesMaitres = new ArrayList<>();
+        maitreAppDAO = new MaitreAppDAO(getApplicationContext());
+        maitreAppDAO.open();
+        lesMaitres = maitreAppDAO.read();
+        maitreAppDAO.close();
+
+        listViewMai.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                unMai = (MaitreApprentissage) listViewMai.getItemAtPosition(position);
+            }
+        });
+
+        ArrayAdapter<MaitreApprentissage> arrayAdapterMai = new ArrayAdapter<MaitreApprentissage>(this, android.R.layout.simple_list_item_single_choice, lesMaitres);
+        listViewMai.setAdapter(arrayAdapterMai);
     }
 
     private View.OnClickListener retourListener = new View.OnClickListener() {

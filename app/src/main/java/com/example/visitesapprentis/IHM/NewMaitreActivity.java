@@ -73,6 +73,13 @@ public class NewMaitreActivity extends AppCompatActivity {
         lesEntreprises = entrepriseDAO.read();
         entrepriseDAO.close();
 
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                uneEnt = (Entreprise) listView.getItemAtPosition(position);
+            }
+        });
+
         ArrayAdapter<Entreprise> arrayAdapter = new ArrayAdapter<Entreprise>(this, android.R.layout.simple_list_item_single_choice, lesEntreprises);
         listView.setAdapter(arrayAdapter);
 

@@ -53,7 +53,6 @@ public class UpdateMaitreActivity extends AppCompatActivity {
         setContentView(R.layout.activity_update_maitre);
 
         listView = (ListView) findViewById(R.id.listeEntMaiUp);
-        listView.setChoiceMode(ListView.CHOICE_MODE_SINGLE);
 
         Bundle extra = getIntent().getExtras();
         if(extra.getInt("position")>= 0)
@@ -88,12 +87,12 @@ public class UpdateMaitreActivity extends AppCompatActivity {
         lesEntreprises = entrepriseDAO.read();
         entrepriseDAO.close();
 
-        int unePosition = 0;
-        for (int i = 0; i < lesEntreprises.size(); i++){
-            if (lesEntreprises.get(i).getNomEnt().equals(uneEnt.getNomEnt())){
-                unePosition = i;
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long l) {
+                uneEnt = (Entreprise) listView.getItemAtPosition(position);
             }
-        }
+        });
 
         ArrayAdapter<Entreprise> arrayAdapter = new ArrayAdapter<Entreprise>(this, android.R.layout.simple_list_item_single_choice, lesEntreprises);
         listView.setAdapter(arrayAdapter);

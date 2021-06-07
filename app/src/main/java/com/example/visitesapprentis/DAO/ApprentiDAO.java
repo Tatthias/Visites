@@ -123,6 +123,7 @@ public class ApprentiDAO extends DAO<Apprenti> {
         valeur.put(COL_CLASSEAPPRENTI, app.getClasseApp());
         valeur.put(COL_MAILAPPRENTI, app.getMailApp());
         valeur.put(COL_REFAPPRENTI, app.getUnReferent().getIdRef());
+        valeur.put(COL_MAIAPPRENTI, app.getUnMaître().getIdMai());
 
 
         Log.d("idModif", String.valueOf(app.getIdApp()));
@@ -255,6 +256,7 @@ public class ApprentiDAO extends DAO<Apprenti> {
         mail = curseur.getString(9);
         idRefApp = curseur.getInt(10);
         idMaiApp = curseur.getInt(11);
+        Log.d("idMaiApp", String.valueOf(idMaiApp));
         SimpleDateFormat formatter = new SimpleDateFormat("yyyy/MM/dd");
         Date uneDate = null;
         try {
@@ -274,18 +276,18 @@ public class ApprentiDAO extends DAO<Apprenti> {
         telRef = curseurRef.getString(4);
 
         Cursor curseurMai = db.query(TABLE_MAITREAPP, null, null, null, COL_ID_MAITREAPP +", "+ COL_NOM_MAITREAPP +", "+
-                COL_PRENOM_MAITREAPP +", "+ COL_ADRESSE_MAITREAPP +", "+ COL_VILLE_MAITREAPP +", "+ COL_CP_MAITREAPP +", "+ COL_TEL_MAITREAPP +", "+
+                COL_PRENOM_MAITREAPP +", "+ COL_ADRESSE_MAITREAPP +", "+ COL_CP_MAITREAPP  +", "+ COL_VILLE_MAITREAPP +", "+ COL_TEL_MAITREAPP +", "+
                 COL_MAIL_MAITREAPP +", "+ COL_ID_ENTREPRISE_MAITREAPP, COL_ID_MAITREAPP + "=" + idMaiApp, null);
         curseurMai.moveToFirst();
-        idMai = curseur.getInt(0);
-        nomMai = curseur.getString(1);
-        prenomMai = curseur.getString(2);
-        adresseMai = curseur.getString(3);
-        cpMai = curseur.getString(4);
-        villeMai = curseur.getString(5);
-        telMai = curseur.getString(6);
-        mailMai = curseur.getString(7);
-        idEntMai = curseur.getInt(8);
+        idMai = curseurMai.getInt(0);
+        nomMai = curseurMai.getString(1);
+        prenomMai = curseurMai.getString(2);
+        adresseMai = curseurMai.getString(3);
+        cpMai = curseurMai.getString(4);
+        villeMai = curseurMai.getString(5);
+        telMai = curseurMai.getString(6);
+        mailMai = curseurMai.getString(7);
+        idEntMai = curseurMai.getInt(8);
 
         Cursor curseurEnt = db.query(TABLE_ENTREPRISE, null, null, null, COL_IDENTREPRISE+ ", " +COL_NOMENTREPRISE + ", " +
                         COL_ADRESSEENTREPRISE + ", " + COL_CPENTREPRISE + ", " + COL_VILLEENTREPRISE + ", " + COL_TELENTREPRISE,
@@ -381,38 +383,35 @@ public class ApprentiDAO extends DAO<Apprenti> {
             Log.d("idMaiApp", String.valueOf(idMaiApp));
 
             Cursor curseurMai = db.query(TABLE_MAITREAPP, null, null, null, COL_ID_MAITREAPP +", "+ COL_NOM_MAITREAPP +", "+
-                    COL_PRENOM_MAITREAPP +", "+ COL_ADRESSE_MAITREAPP +", "+ COL_VILLE_MAITREAPP +", "+ COL_CP_MAITREAPP +", "+ COL_TEL_MAITREAPP +", "+
+                    COL_PRENOM_MAITREAPP +", "+ COL_ADRESSE_MAITREAPP +", "+ COL_CP_MAITREAPP +", "+ COL_VILLE_MAITREAPP +", "+ COL_TEL_MAITREAPP +", "+
                     COL_MAIL_MAITREAPP +", "+ COL_ID_ENTREPRISE_MAITREAPP, COL_ID_MAITREAPP + "=" + idMaiApp, null);
             curseurMai.moveToFirst();
-            idMai = curseur.getInt(0);
-            nomMai = curseur.getString(1);
-            prenomMai = curseur.getString(2);
-            adresseMai = curseur.getString(3);
-            cpMai = curseur.getString(4);
-            villeMai = curseur.getString(5);
-            telMai = curseur.getString(6);
-            mailMai = curseur.getString(7);
-            idEntMai = curseur.getInt(8);
+            idMai = curseurMai.getInt(0);
+            nomMai = curseurMai.getString(1);
+            prenomMai = curseurMai.getString(2);
+            adresseMai = curseurMai.getString(3);
+            cpMai = curseurMai.getString(4);
+            villeMai = curseurMai.getString(5);
+            telMai = curseurMai.getString(6);
+            mailMai = curseurMai.getString(7);
+            idEntMai = curseurMai.getInt(8);
 
-            /*Cursor curseurEnt = db.query(TABLE_ENTREPRISE, null, null, null, COL_IDENTREPRISE + ", " + COL_NOMENTREPRISE + ", " +
+            Log.d("nomMai", nomMai);
+
+            Log.d("idEntMai", String.valueOf(idEntMai));
+
+            Cursor curseurEnt = db.query(TABLE_ENTREPRISE, null, null, null, COL_IDENTREPRISE + ", " + COL_NOMENTREPRISE + ", " +
                             COL_ADRESSEENTREPRISE + ", " + COL_CPENTREPRISE + ", " + COL_VILLEENTREPRISE + ", " + COL_TELENTREPRISE,
                     COL_IDENTREPRISE + "=" + idEntMai, null);
             curseurEnt.moveToFirst();
-            if (curseurEnt.getCount() > 0) {
-                idEnt = curseurEnt.getInt(0);
-                nomEnt = curseurEnt.getString(1);
-                adresseEnt = curseurEnt.getString(2);
-                cpEnt = curseurEnt.getString(3);
-                villeEnt = curseurEnt.getString(4);
-                telEnt = curseurEnt.getString(5);
-            }*/
+            idEnt = curseurEnt.getInt(0);
+            nomEnt = curseurEnt.getString(1);
+            adresseEnt = curseurEnt.getString(2);
+            cpEnt = curseurEnt.getString(3);
+            villeEnt = curseurEnt.getString(4);
+            telEnt = curseurEnt.getString(5);
 
-            idEnt = 1;
-            nomEnt = "Sarl Cym Developpement";
-            adresseEnt = "2 rue de la fontaine d Adam";
-            cpEnt = "86200";
-            villeEnt = "Loudun";
-            telEnt = "0000000000";
+            Log.d("nomEnt", nomEnt);
 
             Entreprise uneEnt = new Entreprise(idEnt, nomEnt, adresseEnt, cpEnt, villeEnt, telEnt);
             Referent unRef = new Referent(idRef,nomRef,prenomRef,adresseRef,telRef);
@@ -420,7 +419,7 @@ public class ApprentiDAO extends DAO<Apprenti> {
             Apprenti unApp = new Apprenti(idApp, nom, prenom, adresse, ville, cp, tel, uneDate, classe, mail, unRef, unMai);
 
             desApprentis.add(unApp);
-            //curseurEnt.close();
+            curseurEnt.close();
             curseurMai.close();
             curseurRef.close();
             curseur.moveToNext();

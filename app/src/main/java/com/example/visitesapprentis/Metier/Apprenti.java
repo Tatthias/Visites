@@ -81,10 +81,6 @@ public class Apprenti {
         this.cpApp = cpApp;
     }
 
-    public void setClasseApp(String classeApp) {
-        this.classeApp = classeApp;
-    }
-
     public String getTelApp() {
         return telApp;
     }
@@ -134,7 +130,7 @@ public class Apprenti {
     }
 
     public String toString(){
-        return nomApp + " " + prenomApp + " unRef: " + unReferent + " unMai: " + unMaître;
+        return nomApp + " " + prenomApp;
     }
 
 }
